@@ -1,0 +1,20 @@
+﻿@model HWA.ECom.Entity.ShoppingCartProduct
+
+@{
+    ViewBag.Title = "TestGet";
+}
+
+<h2>TestGet</h2>
+
+@using (Html.BeginForm("SelectByIdResult", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(excludePropertyErrors: true)
+
+    @Html.LabelFor(model => model.Id)
+    @Html.EditorFor(model => model.Id)
+    @Html.ValidationMessageFor(model => model.Id)
+    <br />
+
+    <input type="submit" value="GetById" />
+
+}

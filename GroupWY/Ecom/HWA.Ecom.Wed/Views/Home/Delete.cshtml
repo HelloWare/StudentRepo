@@ -1,0 +1,21 @@
+﻿@model HWA.ECom.Entity.ShoppingCartProduct
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>TestProductDelete</h2>
+
+@using (Html.BeginForm("DeleteResult", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(excludePropertyErrors: true)
+
+    @Html.LabelFor(model => model.Id)
+    @Html.EditorFor(model => model.Id)
+    @Html.ValidationMessageFor(model => model.Id)
+    <br />     
+
+    <input type="submit" value="Delete" />
+
+}
+
