@@ -1,0 +1,5 @@
+D:\C# programming demo\Project Template 3-7\ECommerce\HWA.ECom.Repository\bin\Debug\HWA.ECom.Repository.dll
+D:\C# programming demo\Project Template 3-7\ECommerce\HWA.ECom.Repository\bin\Debug\HWA.ECom.Repository.pdb
+D:\C# programming demo\Project Template 3-7\ECommerce\HWA.ECom.Repository\obj\Debug\HWA.ECom.Repository.csprojResolveAssemblyReference.cache
+D:\C# programming demo\Project Template 3-7\ECommerce\HWA.ECom.Repository\obj\Debug\HWA.ECom.Repository.dll
+D:\C# programming demo\Project Template 3-7\ECommerce\HWA.ECom.Repository\obj\Debug\HWA.ECom.Repository.pdb
