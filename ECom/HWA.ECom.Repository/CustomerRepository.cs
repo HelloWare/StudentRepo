@@ -134,10 +134,14 @@ namespace HWA.ECom.Repository
                     customer.UserName = reader.GetString(1);
                     customer.FirstName = reader.GetString(2);
                     customer.LastName = reader.GetString(3);
+                    if(!reader.IsDBNull(4))
                     customer.CreatedBy = reader.GetString(4);
-                    customer.CreatedDate = reader.GetDateTime(5);
-                    customer.LastModifiedBy = reader.GetString(6);
-                    customer.LastModifiedDate = reader.GetDateTime(7);
+                    if (!reader.IsDBNull(5))
+                        customer.CreatedDate = reader.GetDateTime(5);
+                    if (!reader.IsDBNull(6))
+                        customer.LastModifiedBy = reader.GetString(6);
+                    if (!reader.IsDBNull(7))
+                        customer.LastModifiedDate = reader.GetDateTime(7);
                     //customer.Id = Convert.ToInt32(reader["Id"]);
                     //customer.UserName = Convert.ToString(reader["UserName"]);
                     //customer.FirstName = Convert.ToString(reader["FirstName"]);

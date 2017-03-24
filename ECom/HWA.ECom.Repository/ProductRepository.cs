@@ -160,21 +160,59 @@ namespace HWA.ECom.Repository
                     Product product = new Product();
                     product.Id = reader.GetInt32(0);
                     product.Name = reader.GetString(1);
-                    product.UnitPrice = reader.GetDecimal(2);
-                    product.StockQuantity = reader.GetDecimal(3);
+                    if (!reader.IsDBNull(2))
+                    {
+                        product.UnitPrice = reader.GetDecimal(2);
+                    }
+                    if (!reader.IsDBNull(3))
+                    {
+                        product.StockQuantity = reader.GetDecimal(3);
+                    }
                     product.Description = reader.GetString(4);
-                    product.Sequence = reader.GetInt32(5);
+                    if (!reader.IsDBNull(5))
+                    {
+                        product.Sequence = reader.GetInt32(5);
+                    }
                     product.IsActive = reader.GetBoolean(6);
-                    product.Comment = reader.GetString(7);
-                    product.UnitOfMeasure = reader.GetString(8);
-                    product.IconUrl = reader.GetString(9);
-                    product.Description = reader.GetString(10);
-                    product.PictureUrl = reader.GetString(11);
+                    if (!reader.IsDBNull(7))
+                    {
+                        product.Comment = reader.GetString(7);
+                    }
+                    if (!reader.IsDBNull(8))
+                    {
+                        product.UnitOfMeasure = reader.GetString(8);
+                    }
+                    if (!reader.IsDBNull(9))
+                    {
+                        product.IconUrl = reader.GetString(9);
+                    }
+                    
+                    if (!reader.IsDBNull(10))
+                    {
+                        product.PictureUrl = reader.GetString(10);
+                    }
+                    if (!reader.IsDBNull(11))
+                    {
+                        product.CreatedBy = reader.GetString(11);
+                    }
+                    if (!reader.IsDBNull(12))
+                    {
+                        product.CreatedDate = reader.GetDateTime(12);
+                    }
+                    if (!reader.IsDBNull(13))
+                    {
+                        product.LastModifiedBy = reader.GetString(14);
+                    }
+                    if (!reader.IsDBNull(14))
+                    {
+                        product.LastModifiedDate = reader.GetDateTime(14);
+                    }
 
-                    product.CreatedBy = reader.GetString(12);
-                    product.CreatedDate = reader.GetDateTime(13);
-                    product.LastModifiedBy = reader.GetString(14);
-                    product.LastModifiedDate = reader.GetDateTime(15);
+                    if (!reader.IsDBNull(15))
+                    {
+                        product.CategoryId = reader.GetInt32(15);
+                    }
+
 
                     products.Add(product);
                 }

@@ -87,12 +87,13 @@ namespace HWA.Ecom.Repository
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("Id", Id);
                 SqlDataReader reader = cmd.ExecuteReader();
-                ShoppingCartProduct shoppingCartProduct = new ShoppingCartProduct();
+                ShoppingCartProduct shoppingCartProduct; 
                 while (reader.Read())
                 {
+                    shoppingCartProduct = new ShoppingCartProduct(Convert.ToInt32(reader["ShoppingCartId"]), Convert.ToInt32(reader["ProductId"]));
                     shoppingCartProduct.Id = Convert.ToInt32(reader["Id"]);
-                    shoppingCartProduct.ShoppingCartId = Convert.ToInt32(reader["ShoppingCartId"]);
-                    shoppingCartProduct.ProductId = Convert.ToInt32(reader["ProductId"]);
+                    //shoppingCartProduct.ShoppingCartId = Convert.ToInt32(reader["ShoppingCartId"]);
+                    //shoppingCartProduct.ProductId = Convert.ToInt32(reader["ProductId"]);
                     shoppingCartProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
                     shoppingCartProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
                     shoppingCartProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
@@ -101,8 +102,9 @@ namespace HWA.Ecom.Repository
                     shoppingCartProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
                     shoppingCartProduct.LastModifiedBy = Convert.ToString(reader["ModifiedBy"]);
                     shoppingCartProduct.LastModifiedDate = Convert.ToDateTime(reader["ModifiedDate"]);
-                   }
-                return shoppingCartProduct;
+                    return shoppingCartProduct;
+                }
+                return null;
             }
         }
 
@@ -116,12 +118,14 @@ namespace HWA.Ecom.Repository
                 cmd.Parameters.AddWithValue("ShoppingCartId", shoppingCartId);
                 SqlDataReader reader = cmd.ExecuteReader();
                 List<ShoppingCartProduct> shoppingCartProductList = new List<ShoppingCartProduct> { };
-                ShoppingCartProduct shoppingCartProduct = new ShoppingCartProduct();
+                ShoppingCartProduct shoppingCartProduct;// = new ShoppingCartProduct();
                 while (reader.Read())
                 {
+                    shoppingCartProduct = new ShoppingCartProduct(Convert.ToInt32(reader["ShoppingCartId"]), Convert.ToInt32(reader["ProductId"]));
                     shoppingCartProduct.Id = Convert.ToInt32(reader["Id"]);
-                    shoppingCartProduct.ShoppingCartId = Convert.ToInt32(reader["ShoppingCartId"]);
-                    shoppingCartProduct.ProductId = Convert.ToInt32(reader["ProductId"]);
+
+                    //shoppingCartProduct.ShoppingCartId = Convert.ToInt32(reader["ShoppingCartId"]);
+                    //shoppingCartProduct.ProductId = Convert.ToInt32(reader["ProductId"]);
                     shoppingCartProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
                     shoppingCartProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
                     shoppingCartProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
