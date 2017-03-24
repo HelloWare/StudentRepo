@@ -41,6 +41,7 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("UnitOfMeasure", product.UnitOfMeasure);
                 cmd.Parameters.AddWithValue("IconUrl", product.IconUrl);
                 cmd.Parameters.AddWithValue("PictureUrl", product.PictureUrl);
+                cmd.Parameters.AddWithValue("CategoryId", product.CategoryId);
 
                 cmd.Parameters.AddWithValue("CreateBy", product.CreateBy);
                 cmd.Parameters.AddWithValue("CreateDate", product.CreateDate);
@@ -93,6 +94,7 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("UnitOfMeasure", product.UnitOfMeasure);
                 cmd.Parameters.AddWithValue("IconUrl", product.IconUrl);
                 cmd.Parameters.AddWithValue("PictureUrl", product.PictureUrl);
+                cmd.Parameters.AddWithValue("CategoryId", product.CategoryId);
 
                 cmd.Parameters.AddWithValue("CreateBy", product.CreateBy);
                 cmd.Parameters.AddWithValue("CreateDate", product.CreateDate);
@@ -128,16 +130,16 @@ namespace HWA.ECom.Repository
                     product.Sequence = reader.GetInt32(5);
                     product.IsActive = reader.GetBoolean(6);
                     product.Comment = reader.GetString(7);
-                    product.UnitOfMeasure = reader.GetString(8);
-                    product.IconUrl = reader.GetString(9);
-                    product.Description = reader.GetString(10);
-                    product.PictureUrl = reader.GetString(11);
 
-                    product.CreateBy = reader.GetString(12);
-                    product.CreateDate = reader.GetDateTime(13);
-                    product.LastModifiedBy = reader.GetString(14);
-                    product.LastModifiedDate = reader.GetDateTime(15);
+                    product.CreateBy = reader.GetString(8);
+                    product.CreateDate = reader.GetDateTime(9);
+                    product.LastModifiedBy = reader.GetString(10);
+                    product.LastModifiedDate = reader.GetDateTime(11);
 
+                    product.UnitOfMeasure = reader.GetString(12);
+                    product.CategoryId = reader.GetInt32(13);
+                    product.IconUrl = reader.GetString(14);             
+                    product.PictureUrl = reader.GetString(15);          
                 }
                 return product;
             }
@@ -166,15 +168,143 @@ namespace HWA.ECom.Repository
                     product.Sequence = reader.GetInt32(5);
                     product.IsActive = reader.GetBoolean(6);
                     product.Comment = reader.GetString(7);
-                    product.UnitOfMeasure = reader.GetString(8);
-                    product.IconUrl = reader.GetString(9);
-                    product.Description = reader.GetString(10);
-                    product.PictureUrl = reader.GetString(11);
 
-                    product.CreateBy = reader.GetString(12);
-                    product.CreateDate = reader.GetDateTime(13);
-                    product.LastModifiedBy = reader.GetString(14);
-                    product.LastModifiedDate = reader.GetDateTime(15);
+                    product.CreateBy = reader.GetString(8);
+                    product.CreateDate = reader.GetDateTime(9);
+                    product.LastModifiedBy = reader.GetString(10);
+                    product.LastModifiedDate = reader.GetDateTime(11);
+
+                    product.UnitOfMeasure = reader.GetString(12);
+                    product.CategoryId = reader.GetInt32(13);
+                    product.IconUrl = reader.GetString(14);
+                    product.PictureUrl = reader.GetString(15);
+
+                    
+
+                    products.Add(product);
+                }
+                return products;
+            }
+
+        }
+
+        public Product GetByCategoryId(Int32 categoryId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("usp_Product_GetByCategoryId", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("CategoryId", categoryId);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                Product product = new Product();
+                while (reader.Read())
+                {
+                    product.Id = reader.GetInt32(0);
+                    product.Name = reader.GetString(1);
+                    product.UnitPrice = reader.GetDecimal(2);
+                    product.StockQuantity = reader.GetDecimal(3);
+                    product.Description = reader.GetString(4);
+                    product.Sequence = reader.GetInt32(5);
+                    product.IsActive = reader.GetBoolean(6);
+                    product.Comment = reader.GetString(7);
+
+                    product.CreateBy = reader.GetString(8);
+                    product.CreateDate = reader.GetDateTime(9);
+                    product.LastModifiedBy = reader.GetString(10);
+                    product.LastModifiedDate = reader.GetDateTime(11);
+
+                    product.UnitOfMeasure = reader.GetString(12);
+                    product.CategoryId = reader.GetInt32(13);
+                    product.IconUrl = reader.GetString(14);
+                    product.PictureUrl = reader.GetString(15);
+                }
+                return product;
+            }
+
+        }
+
+
+        public List<Product> GetByProductNameAdm(string name)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("usp_Product_GetByProductName", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("Name", name);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<Product> products = new List<Product>();
+
+                while (reader.Read())
+                {
+                    Product product = new Product();
+                    product.Id = reader.GetInt32(0);
+                    product.Name = reader.GetString(1);
+                    product.UnitPrice = reader.GetDecimal(2);
+                    product.StockQuantity = reader.GetDecimal(3);
+                    product.Description = reader.GetString(4);
+                    product.Sequence = reader.GetInt32(5);
+                    product.IsActive = reader.GetBoolean(6);
+                    product.Comment = reader.GetString(7);
+
+                    product.CreateBy = reader.GetString(8);
+                    product.CreateDate = reader.GetDateTime(9);
+                    product.LastModifiedBy = reader.GetString(10);
+                    product.LastModifiedDate = reader.GetDateTime(11);
+
+                    product.UnitOfMeasure = reader.GetString(12);
+                    product.CategoryId = reader.GetInt32(13);
+                    product.IconUrl = reader.GetString(14);
+                    product.PictureUrl = reader.GetString(15);
+
+                    products.Add(product);
+                }
+                return products;
+            }
+
+        }
+
+        public List<Product> GetByProductNameUser(string name)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("usp_Product_GetByProductName", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("Name", name);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<Product> products = new List<Product>();
+
+                while (reader.Read())
+                {
+                    Product product = new Product();
+                    product.Id = reader.GetInt32(0);
+                    product.Name = reader.GetString(1);
+                    product.UnitPrice = reader.GetDecimal(2);
+                    product.StockQuantity = reader.GetDecimal(3);
+                    product.Description = reader.GetString(4);
+                    product.Sequence = reader.GetInt32(5);
+                    product.IsActive = reader.GetBoolean(6);
+                    product.Comment = reader.GetString(7);
+
+                    product.CreateBy = reader.GetString(8);
+                    product.CreateDate = reader.GetDateTime(9);
+                    product.LastModifiedBy = reader.GetString(10);
+                    product.LastModifiedDate = reader.GetDateTime(11);
+
+                    product.UnitOfMeasure = reader.GetString(12);
+                    product.CategoryId = reader.GetInt32(13);
+                    product.IconUrl = reader.GetString(14);
+                    product.PictureUrl = reader.GetString(15);
 
                     products.Add(product);
                 }

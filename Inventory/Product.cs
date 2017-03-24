@@ -18,5 +18,6 @@ namespace HWA.ECom.Entity
         public string UnitOfMeasure { get; set; }
         public string IconUrl { get; set; }
         public string PictureUrl { get; set; }
+        public int CategoryId { get; set; }
     }
 }

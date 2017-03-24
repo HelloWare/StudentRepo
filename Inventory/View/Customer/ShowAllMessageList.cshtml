@@ -1,0 +1,69 @@
+﻿@model IEnumerable<HWA.ECom.Entity.Customer>
+
+@{
+    ViewBag.Title = "ShowAllMessage";
+}
+
+<h2>ShowAllMessage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "IndexInsert", "Customer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "IndexUpdate", new { id=item.Id },null) |
+            @Html.ActionLink("Details", "Get", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id },null)
+        </td>
+    </tr>
+}
+
+</table>
