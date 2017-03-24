@@ -15,11 +15,13 @@ namespace HWA.ECom.Web.Controllers
         {
             return View();
         }
-        public ActionResult ListAllProducts()
+
+        public ActionResult ProductList()
         {
             ProductRepository productRepository = new ProductRepository(ConstantUtil.MyConnectionString);
-            IEnumerable<Product> products = productRepository.GetAll();
-            return View(products);
+            productRepository.GetAll();
+            IEnumerable<Product>
+            return View();
         }
         public ActionResult Create(Product product)
         {
