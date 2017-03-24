@@ -23,7 +23,7 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    SELECT Id, Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, UnitOfMeasure, IconUrl, PictureUrl, CreateBy, CreateDate, LastModifiedBy, LastModifiedDate, CategoryId
+    SELECT Id, Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, UnitOfMeasure, IconUrl, PictureUrl, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate, CategoryId
 	FROM [dbo].[Product]
 	WHERE Id = @Id
 END

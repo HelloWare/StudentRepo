@@ -23,7 +23,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT Id, UserName, FirstName, LastName, CreateBy, CreateDate, LastModifiedBy, LastModifiedDate
+	SELECT Id, UserName, FirstName, LastName, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate
 	FROM [dbo].[Customer]
 END
 

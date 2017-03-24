@@ -17,16 +17,16 @@ CREATE PROCEDURE [dbo].[usp_Customer_Insert]
 	@UserName VARCHAR(25),
 	@FirstName VARCHAR(25),
 	@LastName VARCHAR(25),
-	@CreateBy VARCHAR(25),
-	@CreateDate DATETIME,
+	@CreatedBy VARCHAR(25),
+	@CreatedDate DATETIME,
 	@LastModifiedBy VARCHAR(25),
 	@LastModifiedDate DATETIME
 AS
 BEGIN
 	SET NOCOUNT ON;
 
-	INSERT [dbo].[Customer] (UserName, FirstName, LastName, CreateBy, CreateDate, LastModifiedBy, LastModifiedDate)
-	VALUES (@UserName, @FirstName, @LastName, @CreateBy, @CreateDate, @LastModifiedBy, @LastModifiedDate)
+	INSERT [dbo].[Customer] (UserName, FirstName, LastName, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate)
+	VALUES (@UserName, @FirstName, @LastName, @CreatedBy, @CreatedDate, @LastModifiedBy, @LastModifiedDate)
 
 	RETURN @@IDENTITY
    

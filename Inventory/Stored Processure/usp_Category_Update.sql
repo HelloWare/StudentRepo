@@ -21,8 +21,8 @@ CREATE PROCEDURE [dbo].[usp_Category_Update]
 	@Description VARCHAR(200),
 	@IsActive BIT,
 	@Sequence INT,
-	@CreateBy VARCHAR(25),
-	@CreateDate DATETIME,
+	@CreatedBy VARCHAR(25),
+	@CreatedDate DATETIME,
 	@LastModifiedBy VARCHAR(25),
 	@LastModifiedDate DATETIME
 AS
@@ -32,7 +32,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     UPDATE [dbo].[Category]
-	SET  Name = @Name, Description = @Description, IsActive = @IsActive, Sequence = @Sequence, CreateBy = @CreateBy, CreateDate = @CreateDate, LastModifiedBy = @LastModifiedBy, LastModifiedDate = @LastModifiedDate
+	SET  Name = @Name, Description = @Description, IsActive = @IsActive, Sequence = @Sequence, CreatedBy = @CreatedBy, CreatedDate = @CreatedDate, LastModifiedBy = @LastModifiedBy, LastModifiedDate = @LastModifiedDate
 	WHERE Id = @Id
 END
 
