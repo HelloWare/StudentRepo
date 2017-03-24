@@ -9,6 +9,12 @@ namespace HWA.ECom.Entity
 
     public class ShoppingCartProduct:BaseEntity
     {
+        public ShoppingCartProduct(int shoppinngCartId,int productId)
+        {
+            this.ShoppingCartId = shoppinngCartId;
+            this.ProductId = productId;
+                                
+        }
         public int ShoppingCartId
         {
             get; set;

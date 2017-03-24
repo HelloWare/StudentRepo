@@ -90,18 +90,21 @@ namespace HWA.Ecom.Repository
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("Id", id);
                 SqlDataReader reader = cmd.ExecuteReader();
-                ShoppingCart shoppingCart = new ShoppingCart();
+                ShoppingCart shoppingCart;// = new ShoppingCart();
                 while (reader.Read())
                 {
+                    shoppingCart = new ShoppingCart(Convert.ToInt32(reader["CustomerId"]));
                     shoppingCart.Id = id;
-                    shoppingCart.CustomerId = Convert.ToInt32(reader["CustomerId"]);
+                    //shoppingCart.CustomerId = ;
                     shoppingCart.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
                     shoppingCart.CreatedBy = Convert.ToString(reader["CreatedBy"]);
                     shoppingCart.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
                     shoppingCart.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
                     shoppingCart.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                    return shoppingCart;
+
                 }
-                return shoppingCart;
+                return null;
             }
         }
 
@@ -114,18 +117,21 @@ namespace HWA.Ecom.Repository
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("Id", customerId);
                 SqlDataReader reader = cmd.ExecuteReader();
-                ShoppingCart shoppingCart = new ShoppingCart();
+                ShoppingCart shoppingCart;// = new ShoppingCart();
                 while (reader.Read())
                 {
+                    shoppingCart = new ShoppingCart(customerId);
                     shoppingCart.Id = Convert.ToInt32(reader["Id"]);
-                    shoppingCart.CustomerId = customerId;
+                    //shoppingCart.CustomerId = customerId;
                     shoppingCart.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
                     shoppingCart.CreatedBy = Convert.ToString(reader["CreatedBy"]);
                     shoppingCart.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
                     shoppingCart.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
                     shoppingCart.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                    return shoppingCart;
+
                 }
-                return shoppingCart;
+                return null;
             }
         }
 
@@ -138,11 +144,12 @@ namespace HWA.Ecom.Repository
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataReader reader = cmd.ExecuteReader();
                 List<ShoppingCart> shoppingCartList = new List<ShoppingCart> { };
-                ShoppingCart shoppingCart = new ShoppingCart();
+                ShoppingCart shoppingCart;// = new ShoppingCart();
                 while (reader.Read())
                 {
+                    shoppingCart = new ShoppingCart(Convert.ToInt32(reader["CustomerId"]));
                     shoppingCart.Id = Convert.ToInt32(reader["Id"]);
-                    shoppingCart.CustomerId = Convert.ToInt32(reader["CustomerId"]);
+                    //shoppingCart.CustomerId = Convert.ToInt32(reader["CustomerId"]);
                     shoppingCart.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
                     shoppingCart.CreatedBy = Convert.ToString(reader["CreatedBy"]);
                     shoppingCart.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
