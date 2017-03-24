@@ -24,7 +24,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT Id, Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, CreateBy, CreateDate, LastModifiedBy, LastModifiedDate, UnitOfMeasure, CategoryId, IconUrl, PictureUrl
+	SELECT Id, Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate, UnitOfMeasure, CategoryId, IconUrl, PictureUrl
 	FROM [dbo].[Product]
 	WHERE CategoryId = @CategoryId
 END

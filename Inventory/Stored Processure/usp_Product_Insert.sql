@@ -23,8 +23,8 @@ CREATE PROCEDURE [dbo].[usp_Product_Insert]
 	@Sequence INT,
 	@IsActive BIT,
 	@Comment VARCHAR(200),
-	@CreateBy VARCHAR(25),
-	@CreateDate DATETIME,
+	@CreatedBy VARCHAR(25),
+	@CreatedDate DATETIME,
 	@LastModifiedBy VARCHAR(25),
 	@LastModifiedDate DATETIME,
 	@UnitOfMeasure VARCHAR(25),
@@ -37,8 +37,8 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    INSERT [dbo].[Product] (Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, CreateBy, CreateDate, LastModifiedBy, LastModifiedDate, UnitOfMeasure, CategoryId, IconUrl, PictureUrl)
-	VALUES (@Name, @UnitPrice, @StockQuantity, @Description, @Sequence, @IsActive, @Comment, @CreateBy, @CreateDate, @LastModifiedBy, @LastModifiedDate, @UnitOfMeasure, @CategoryId, @IconUrl, @PictureUrl)
+    INSERT [dbo].[Product] (Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate, UnitOfMeasure, CategoryId, IconUrl, PictureUrl)
+	VALUES (@Name, @UnitPrice, @StockQuantity, @Description, @Sequence, @IsActive, @Comment, @CreatedBy, @CreatedDate, @LastModifiedBy, @LastModifiedDate, @UnitOfMeasure, @CategoryId, @IconUrl, @PictureUrl)
 
 	RETURN @@IDENTITY
 END

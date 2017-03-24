@@ -22,7 +22,7 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    SELECT Id, UserName, FirstName, LastName, CreateBy, CreateDate, LastModifiedBy, LastModifiedDate
+    SELECT Id, UserName, FirstName, LastName, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate
 	FROM [dbo].[Customer]
 	WHERE Id = @Id
 END

@@ -24,8 +24,8 @@ CREATE PROCEDURE [dbo].[usp_Product_Update]
 	@Sequence INT,
 	@IsActive BIT,
 	@Comment VARCHAR(200),
-	@CreateBy VARCHAR(25),
-	@CreateDate DATETIME,
+	@CreatedBy VARCHAR(25),
+	@CreatedDate DATETIME,
 	@LastModifiedBy VARCHAR(25),
 	@LastModifiedDate DATETIME,
 	@UnitOfMeasure VARCHAR(25),
@@ -39,7 +39,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     UPDATE [dbo].[Product]
-	SET  Name = @Name, UnitPrice = @UnitPrice, StockQuantity = @StockQuantity, Description = @Description, Sequence = @Sequence, IsActive = @IsActive, Comment = @Comment, UnitOfMeasure = @UnitOfMeasure, CategoryId = @CategoryId, IconUrl = @IconUrl, PictureUrl = @PictureUrl, CreateBy = @CreateBy, CreateDate = @CreateDate, LastModifiedBy = @LastModifiedBy, LastModifiedDate = @LastModifiedDate
+	SET  Name = @Name, UnitPrice = @UnitPrice, StockQuantity = @StockQuantity, Description = @Description, Sequence = @Sequence, IsActive = @IsActive, Comment = @Comment, UnitOfMeasure = @UnitOfMeasure, CategoryId = @CategoryId, IconUrl = @IconUrl, PictureUrl = @PictureUrl, CreatedBy = @CreatedBy, CreatedDate = @CreatedDate, LastModifiedBy = @LastModifiedBy, LastModifiedDate = @LastModifiedDate
 	WHERE Id = @Id
 END
 

@@ -19,8 +19,8 @@ CREATE PROCEDURE [dbo].[usp_Customer_Update]
 	@UserName VARCHAR(25),
 	@FirstName VARCHAR(25),
 	@LastName VARCHAR(25),
-	@CreateBy VARCHAR(50),
-	@CreateDate DATETIME,
+	@CreatedBy VARCHAR(50),
+	@CreatedDate DATETIME,
 	@LastModifiedBy VARCHAR(25),
 	@LastModifiedDate DATETIME
 AS
@@ -30,7 +30,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     UPDATE [dbo].[Customer] 
-	SET  UserName = @UserName, FirstName = @FirstName, LastName = @LastName, CreateBy = @CreateBy, CreateDate = @CreateDate, LastModifiedBy = @LastModifiedBy, LastModifiedDate = @LastModifiedDate
+	SET  UserName = @UserName, FirstName = @FirstName, LastName = @LastName, CreatedBy = @CreatedBy, CreatedDate = @CreatedDate, LastModifiedBy = @LastModifiedBy, LastModifiedDate = @LastModifiedDate
 	WHERE Id = @Id
 END
 

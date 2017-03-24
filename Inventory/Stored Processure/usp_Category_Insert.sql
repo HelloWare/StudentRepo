@@ -20,8 +20,8 @@ CREATE PROCEDURE [dbo].[usp_Category_Insert]
 	@Description VARCHAR(200),
 	@IsActive BIT,
 	@Sequence INT,
-	@CreateBy VARCHAR(25),
-	@CreateDate DATETIME,
+	@CreatedBy VARCHAR(25),
+	@CreatedDate DATETIME,
 	@LastModifiedBy VARCHAR(25),
 	@LastModifiedDate DATETIME
 AS
@@ -30,8 +30,8 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    INSERT [dbo].[Category] (Name, Description, IsActive, Sequence, CreateBy, CreateDate, LastModifiedBy, LastModifiedDate)
-	VALUES (@Name, @Description, @IsActive, @Sequence, @CreateBy, @CreateDate, @LastModifiedBy, @LastModifiedDate)
+    INSERT [dbo].[Category] (Name, Description, IsActive, Sequence, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate)
+	VALUES (@Name, @Description, @IsActive, @Sequence, @CreatedBy, @CreatedDate, @LastModifiedBy, @LastModifiedDate)
 
 	RETURN @@IDENTITY
 END
