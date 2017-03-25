@@ -117,26 +117,40 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("Id", id);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-                CustomerOrder customerOrder = new CustomerOrder();
+                CustomerOrder customerOrder;
                 while (reader.Read())
                 {
-                    customerOrder.Id = id;
-                    customerOrder.CustomerId = Convert.ToInt32(reader["CustomerId"]);
-                    customerOrder.StatusId = Convert.ToInt32(reader["StatusId"]);
-                    customerOrder.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
-                    customerOrder.PaymentType = Convert.ToString(reader["PaymentType"]);
-                    customerOrder.OrderDate = Convert.ToDateTime(reader["OrderDate"]);
-                    customerOrder.ShipToAddressId = Convert.ToString(reader["ShipToAddressId"]);
-                    customerOrder.OrderNumber = Convert.ToString(reader["OrderNumber"]);
-                    customerOrder.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
-                    customerOrder.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                    customerOrder.CreatedBy = Convert.ToString(reader["CreatedBy"]);
-                    customerOrder.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
-                    //TO BE DONE, ORM process, map table data to class object
-
-                }
-                return customerOrder;
+                    if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+                    {
+                        customerOrder = new CustomerOrder(reader.GetInt32(0), reader.GetInt32(1));
+                        if (!reader.IsDBNull(1))
+                            customerOrder.CustomerId = reader.GetInt32(1);
+                        if (!reader.IsDBNull(2))
+                            customerOrder.StatusId = reader.GetInt32(2);
+                        if (!reader.IsDBNull(3))
+                            customerOrder.GrandTotal = reader.GetDecimal(3);
+                        if (!reader.IsDBNull(4))
+                            customerOrder.PaymentType = reader.GetString(4);
+                        if (!reader.IsDBNull(5))
+                            customerOrder.OrderDate = reader.GetDateTime(5);
+                        if (!reader.IsDBNull(6))
+                            customerOrder.ShipToAddressId = reader.GetString(6);
+                        if (!reader.IsDBNull(7))
+                            customerOrder.OrderNumber = reader.GetString(7);
+                        if (!reader.IsDBNull(8))
+                            customerOrder.CreatedBy = reader.GetString(8);
+                        if (!reader.IsDBNull(9))
+                            customerOrder.CreatedDate = reader.GetDateTime(9);
+                        if (!reader.IsDBNull(10))
+                            customerOrder.LastModifiedBy = reader.GetString(10);
+                        if (!reader.IsDBNull(11))
+                            customerOrder.LastModifiedDate = reader.GetDateTime(11);
+                        //TO BE DONE, ORM process, map table data to class object
+                        return customerOrder;
+                    }
+                }          
             }
+            return null;
         }
 
         public List<CustomerOrder> GetAll()
@@ -149,23 +163,39 @@ namespace HWA.ECom.Repository
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 List<CustomerOrder> customerOrders = new List<CustomerOrder>();
+                CustomerOrder customerOrder;
                 while (reader.Read())
                 {
-                    CustomerOrder customerOrder = new CustomerOrder();
-                    customerOrder.CustomerId = Convert.ToInt32(reader["CustomerId"]);
-                    customerOrder.StatusId = Convert.ToInt32(reader["StatusId"]);
-                    customerOrder.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
-                    customerOrder.PaymentType = Convert.ToString(reader["PaymentType"]);
-                    customerOrder.OrderDate = Convert.ToDateTime(reader["OrderDate"]);
-                    customerOrder.ShipToAddressId = Convert.ToString(reader["ShipToAddressId"]);
-                    customerOrder.OrderNumber = Convert.ToString(reader["OrderNumber"]);
-                    customerOrder.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
-                    customerOrder.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                    customerOrder.CreatedBy = Convert.ToString(reader["CreatedBy"]);
-                    customerOrder.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
-                    customerOrders.Add(customerOrder);
-                    //TO BE DONE, ORM process, map table data to class object
-
+                    if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+                    {
+                        customerOrder = new CustomerOrder(reader.GetInt32(0), reader.GetInt32(1));
+                        if (!reader.IsDBNull(0))
+                            customerOrder.Id = reader.GetInt32(0);
+                        if (!reader.IsDBNull(1))
+                            customerOrder.CustomerId = reader.GetInt32(1);
+                        if (!reader.IsDBNull(2))
+                            customerOrder.StatusId = reader.GetInt32(2);
+                        if (!reader.IsDBNull(3))
+                            customerOrder.GrandTotal = reader.GetDecimal(3);
+                        if (!reader.IsDBNull(4))
+                            customerOrder.PaymentType = reader.GetString(4);
+                        if (!reader.IsDBNull(5))
+                            customerOrder.OrderDate = reader.GetDateTime(5);
+                        if (!reader.IsDBNull(6))
+                            customerOrder.ShipToAddressId = reader.GetString(6);
+                        if (!reader.IsDBNull(7))
+                            customerOrder.OrderNumber = reader.GetString(7);
+                        if (!reader.IsDBNull(8))
+                            customerOrder.CreatedBy = reader.GetString(8);
+                        if (!reader.IsDBNull(9))
+                            customerOrder.CreatedDate = reader.GetDateTime(9);
+                        if (!reader.IsDBNull(10))
+                            customerOrder.LastModifiedBy = reader.GetString(10);
+                        if (!reader.IsDBNull(11))
+                            customerOrder.LastModifiedDate = reader.GetDateTime(11);
+                        customerOrders.Add(customerOrder);
+                        //TO BE DONE, ORM process, map table data to class object
+                    }
                 }
                 return customerOrders;
             }
@@ -191,17 +221,30 @@ namespace HWA.ECom.Repository
 
                     foreach (var co in customerOrders)
                     {
-                        co.Id = Convert.ToInt32(reader["Id"]);
-                        co.CustomerId= Convert.ToInt32(reader["CustomerId"]);
-                        co.GrandTotal= Convert.ToDecimal(reader["GrandTotal"]);
-                        co.PaymentType= Convert.ToString(reader["PaymentType"]);
-                        co.OrderDate= Convert.ToDateTime(reader["OrderDate"]);
-                        co.ShipToAddressId = Convert.ToString(reader["ShipToAddressId"]);
-                        co.OrderNumber = Convert.ToString(reader["OrderNumber"]);
-                        co.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
-                        co.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                        co.CreatedBy = Convert.ToString(reader["CreatedBy"]);
-                        co.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
+                        if (!reader.IsDBNull(0))
+                            co.Id = reader.GetInt32(0);
+                        if (!reader.IsDBNull(1))
+                            co.CustomerId = reader.GetInt32(1);
+                        if (!reader.IsDBNull(2))
+                            co.StatusId = reader.GetInt32(2);
+                        if (!reader.IsDBNull(3))
+                            co.GrandTotal = reader.GetDecimal(3);
+                        if (!reader.IsDBNull(4))
+                            co.PaymentType = reader.GetString(4);
+                        if (!reader.IsDBNull(5))
+                            co.OrderDate = reader.GetDateTime(5);
+                        if (!reader.IsDBNull(6))
+                            co.ShipToAddressId = reader.GetString(6);
+                        if (!reader.IsDBNull(7))
+                            co.OrderNumber = reader.GetString(7);
+                        if (!reader.IsDBNull(8))
+                            co.CreatedBy = reader.GetString(8);
+                        if (!reader.IsDBNull(9))
+                            co.CreatedDate = reader.GetDateTime(9);
+                        if (!reader.IsDBNull(10))
+                            co.LastModifiedBy = reader.GetString(10);
+                        if (!reader.IsDBNull(11))
+                            co.LastModifiedDate = reader.GetDateTime(11);
                     }
 
                     //TO BE DONE, ORM process, map table data to class object
