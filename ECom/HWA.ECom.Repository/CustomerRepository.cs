@@ -60,12 +60,15 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("UserName", customer.UserName);
                 cmd.Parameters.AddWithValue("FirstName", customer.FirstName);
                 cmd.Parameters.AddWithValue("LastName", customer.LastName);
-                cmd.Parameters.AddWithValue("CreateBy", customer.CreatedBy);
-                cmd.Parameters.AddWithValue("CreateDate", customer.CreatedDate);
-                cmd.Parameters.AddWithValue("LastModifiedBy", customer.LastModifiedBy);
+                if(customer.CreatedBy != null)
+                    cmd.Parameters.AddWithValue("CreatedBy", customer.CreatedBy);
+                cmd.Parameters.AddWithValue("CreatedDate", customer.CreatedDate);
+                if (customer.LastModifiedBy != null)
+                    cmd.Parameters.AddWithValue("LastModifiedBy", customer.LastModifiedBy);
                 cmd.Parameters.AddWithValue("LastModifiedDate", customer.LastModifiedDate);
 
                 cmd.ExecuteNonQuery();
+
             }           
 
         }
@@ -104,24 +107,25 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("UserName", customer.UserName);
                 cmd.Parameters.AddWithValue("FirstName", customer.FirstName);
                 cmd.Parameters.AddWithValue("LastName", customer.LastName);
-                cmd.Parameters.AddWithValue("CreateBy", customer.CreatedBy);
-                cmd.Parameters.AddWithValue("CreateDate", customer.CreatedDate);
-                cmd.Parameters.AddWithValue("LastModifiedBy", customer.LastModifiedBy);
+                if (customer.CreatedBy != null)
+                    cmd.Parameters.AddWithValue("CreateDBy", customer.CreatedBy);
+                cmd.Parameters.AddWithValue("CreateDDate", customer.CreatedDate);
+                if (customer.CreatedBy != null)
+                    cmd.Parameters.AddWithValue("LastModifiedBy", customer.LastModifiedBy);
                 cmd.Parameters.AddWithValue("LastModifiedDate", DateTime.Now);
 
                 cmd.ExecuteNonQuery();
-               
             }
 
         }
 
 
-        public Customer Get(Int32 id)
+        public Customer GetById(Int32 id)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("usp_Customer_Get", con);
+                SqlCommand cmd = new SqlCommand("usp_Customer_GetById", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("Id", id);
@@ -135,26 +139,54 @@ namespace HWA.ECom.Repository
                     customer.FirstName = reader.GetString(2);
                     customer.LastName = reader.GetString(3);
                     if(!reader.IsDBNull(4))
-                    customer.CreatedBy = reader.GetString(4);
+                        customer.CreatedBy = reader.GetString(4);
                     if (!reader.IsDBNull(5))
                         customer.CreatedDate = reader.GetDateTime(5);
                     if (!reader.IsDBNull(6))
                         customer.LastModifiedBy = reader.GetString(6);
                     if (!reader.IsDBNull(7))
                         customer.LastModifiedDate = reader.GetDateTime(7);
-                    //customer.Id = Convert.ToInt32(reader["Id"]);
-                    //customer.UserName = Convert.ToString(reader["UserName"]);
-                    //customer.FirstName = Convert.ToString(reader["FirstName"]);
-                    //customer.LastName = Convert.ToString(reader["LastName"]);
-                    //customer.CreatedBy = Convert.ToString(reader["CreateBy"]);
-                    //customer.CreateDate = Convert.ToDateTime(reader["CreateDate"]);
-                    //customer.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
-                    //customer.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                   
 
                 }
                 return customer;
             }
  
+        }
+
+
+        public Customer GetByName(string name)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("usp_Customer_GetByName", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("UserName", name);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                Customer customer = new Customer();
+                while (reader.Read())
+                {
+                    customer.Id = reader.GetInt32(0);
+                    customer.UserName = reader.GetString(1);
+                    customer.FirstName = reader.GetString(2);
+                    customer.LastName = reader.GetString(3);
+                    if (!reader.IsDBNull(4))
+                        customer.CreatedBy = reader.GetString(4);
+                    if (!reader.IsDBNull(5))
+                        customer.CreatedDate = reader.GetDateTime(5);
+                    if (!reader.IsDBNull(6))
+                        customer.LastModifiedBy = reader.GetString(6);
+                    if (!reader.IsDBNull(7))
+                        customer.LastModifiedDate = reader.GetDateTime(7);
+
+
+                }
+                return customer;
+            }
+
         }
 
 
@@ -172,12 +204,17 @@ namespace HWA.ECom.Repository
                 {
                     Customer customer = new Customer();
                     customer.Id = reader.GetInt32(0);
-                    customer.UserName = reader.GetString(1);
-                    customer.FirstName = reader.GetString(2);
-                    customer.LastName = reader.GetString(3);
-                    customer.CreatedBy = reader.GetString(4);
+                    if (!reader.IsDBNull(1))
+                        customer.UserName = reader.GetString(1);
+                    if (!reader.IsDBNull(2))
+                        customer.FirstName = reader.GetString(2);
+                    if (!reader.IsDBNull(3))
+                        customer.LastName = reader.GetString(3);
+                    if (!reader.IsDBNull(4))
+                        customer.CreatedBy = reader.GetString(4);
                     customer.CreatedDate = reader.GetDateTime(5);
-                    customer.LastModifiedBy = reader.GetString(6);
+                    if (!reader.IsDBNull(6))
+                        customer.LastModifiedBy = reader.GetString(6);
                     customer.LastModifiedDate = reader.GetDateTime(7);
  
                     customers.Add(customer);

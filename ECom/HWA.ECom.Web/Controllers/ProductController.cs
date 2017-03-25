@@ -11,7 +11,7 @@ namespace HWA.ECom.Web.Controllers
 {
     public class ProductController : Controller
     {
-        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.MyConnectionString);
+        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.EComDb);
 
         Customer customer;
         ShoppingCart shoppingCart; 
@@ -24,7 +24,7 @@ namespace HWA.ECom.Web.Controllers
         public String AddToCart(int id)
         {
             //not supposed to be here, should be after login event
-            customer = customerRepo.Get(1);
+            customer = customerRepo.GetById(1);
             shoppingCart = new ShoppingCart(customer.Id);
             // create a ShoppingCartRepository scr object
             //use scr to save shoppingCart
