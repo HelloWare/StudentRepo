@@ -24,15 +24,20 @@ namespace HWA.ECom.Web.Controllers
         public String AddToCart(int id)
         {
             //not supposed to be here, should be after login event
-            customer = customerRepo.Get(1);
+            customer = customerRepo.GetById(1);
             shoppingCart = new ShoppingCart(customer.Id);
             // create a ShoppingCartRepository scr object
             //use scr to save shoppingCart
+            ShoppingCartRepository scr = new ShoppingCartRepository(ConstantUtil.MyConnectionString);
+            scr.Insert(shoppingCart);
 
 
             ShoppingCartProduct scp = new ShoppingCartProduct(shoppingCart.Id, id);
+            scp.Quantity = 100;
             //create a ShoppinngCartProductRepository scpr
             //use scpr to save scp
+            ShoppingCartProductRepository scpr = new ShoppingCartProductRepository(ConstantUtil.MyConnectionString);
+            scpr.Create(scp);
             return "Add product " + id + " to the cart successfully!";
         }
 

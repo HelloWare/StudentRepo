@@ -13,7 +13,6 @@ namespace HWA.ECom.Web
 
         public static String AzureDb = ConfigurationManager.ConnectionStrings["AzureConnection"].ConnectionString;
 
-        //Not good practice
-        public static String NotFromWebConfig = @"Data Source = (LocalDb)\MSSQLLocalDB; Initial Catalog = AzureDB; Integrated Security = True";
+        public static String EComDb = ConfigurationManager.ConnectionStrings["EComLocalConnection"].ConnectionString;
     }
 }

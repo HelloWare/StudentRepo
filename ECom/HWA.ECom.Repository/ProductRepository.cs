@@ -31,7 +31,9 @@ namespace HWA.ECom.Repository
                 SqlCommand cmd = new SqlCommand("usp_Product_Insert", con);//usp_Customer_Insert
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("Category", product.CategoryId);
                 cmd.Parameters.AddWithValue("Name", product.Name);
+                
                 cmd.Parameters.AddWithValue("UnitPrice", product.UnitPrice);
                 cmd.Parameters.AddWithValue("StockQuantity", product.StockQuantity);
                 cmd.Parameters.AddWithValue("Description", product.Description);
