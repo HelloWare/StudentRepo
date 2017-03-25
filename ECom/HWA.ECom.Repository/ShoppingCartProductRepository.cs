@@ -12,9 +12,14 @@ namespace HWA.Ecom.Repository
 {
     public class ShoppingCartProductRepository
     {
-        public static Boolean Create(ShoppingCartProduct shoppingCartProduct)
+        private string _connectionString;
+        public ShoppingCartProductRepository(string connectionString)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EComConnection"].ConnectionString))
+            this._connectionString = connectionString;
+        }
+        public Boolean Create(ShoppingCartProduct shoppingCartProduct)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("usp_ECom_InsertShoppingCartProduct", con);
@@ -25,8 +30,8 @@ namespace HWA.Ecom.Repository
                 cmd.Parameters.AddWithValue("UnitPrice", shoppingCartProduct.UnitPrice);
                 cmd.Parameters.AddWithValue("UnitOfMeasure", shoppingCartProduct.UnitOfMeasure);
                 cmd.Parameters.AddWithValue("SubTotal", shoppingCartProduct.SubTotal);
-                cmd.Parameters.AddWithValue("CreatedBy", shoppingCartProduct.CreatedBy);
-                cmd.Parameters.AddWithValue("CreatedDate", shoppingCartProduct.CreatedDate);
+                cmd.Parameters.AddWithValue("CreatedBy", "Deyi");
+                cmd.Parameters.AddWithValue("CreatedDate", DateTime.Now);
                 SqlParameter retval = cmd.Parameters.Add("Return", SqlDbType.Int);
                 retval.Direction = System.Data.ParameterDirection.ReturnValue;
                 if (cmd.ExecuteNonQuery() == 1)
@@ -35,9 +40,9 @@ namespace HWA.Ecom.Repository
             return false;
         }
 
-        public static Boolean Update(ShoppingCartProduct shoppingCartProduct)
+        public Boolean Update(ShoppingCartProduct shoppingCartProduct)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EComConnection"].ConnectionString))
+            using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("usp_ECom_UpdateShoppingCartProduct", con);
@@ -49,8 +54,8 @@ namespace HWA.Ecom.Repository
                 cmd.Parameters.AddWithValue("UnitPrice", shoppingCartProduct.UnitPrice);
                 cmd.Parameters.AddWithValue("UnitOfMeasure", shoppingCartProduct.UnitOfMeasure);
                 cmd.Parameters.AddWithValue("SubTotal", shoppingCartProduct.SubTotal);
-                cmd.Parameters.AddWithValue("ModifiedBy", shoppingCartProduct.LastModifiedBy);
-                cmd.Parameters.AddWithValue("ModifiedDate", shoppingCartProduct.LastModifiedDate);
+                cmd.Parameters.AddWithValue("ModifiedBy", "Deyi");
+                cmd.Parameters.AddWithValue("ModifiedDate", DateTime.Now);
                 SqlParameter retval = cmd.Parameters.Add("Return", SqlDbType.Int);
                 retval.Direction = System.Data.ParameterDirection.ReturnValue;
                 if (cmd.ExecuteNonQuery() == 1)
@@ -59,9 +64,10 @@ namespace HWA.Ecom.Repository
             return false;
         }
 
-        public static Boolean Delete(Int32 Id)
+        public Boolean Delete(Int32 Id)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EComConnection"].ConnectionString))
+            using (SqlConnection con = new SqlConnection(_connectionString))
+
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("usp_ECom_DeleteShoppingCartProduct", con);
@@ -78,9 +84,9 @@ namespace HWA.Ecom.Repository
             return false;
         }
 
-        public static ShoppingCartProduct SelectById(Int32 Id)
+        public  ShoppingCartProduct SelectById(Int32 Id)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EComConnection"].ConnectionString))
+            using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("usp_ECom_GetShoppingCartProduct", con);
@@ -108,9 +114,9 @@ namespace HWA.Ecom.Repository
             }
         }
 
-        public static List<ShoppingCartProduct> Search(Int32 shoppingCartId)
+        public  List<ShoppingCartProduct> Search(Int32 shoppingCartId)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EComConnection"].ConnectionString))
+            using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("usp_ECom_SearchShoppingCartProductByShoppingCartId", con);
@@ -139,10 +145,5 @@ namespace HWA.Ecom.Repository
                 return shoppingCartProductList;
             }
         }
-
-
     }
-
-
-
 }

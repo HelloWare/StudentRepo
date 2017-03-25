@@ -168,13 +168,10 @@ namespace HWA.ECom.Repository
                 {
                     if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
                     {
-                        customerOrder = new CustomerOrder(reader.GetInt32(0), reader.GetInt32(1));
+                        customerOrder = new CustomerOrder(reader.GetInt32(1), reader.GetInt32(2));
                         if (!reader.IsDBNull(0))
                             customerOrder.Id = reader.GetInt32(0);
-                        if (!reader.IsDBNull(1))
-                            customerOrder.CustomerId = reader.GetInt32(1);
-                        if (!reader.IsDBNull(2))
-                            customerOrder.StatusId = reader.GetInt32(2);
+
                         if (!reader.IsDBNull(3))
                             customerOrder.GrandTotal = reader.GetDecimal(3);
                         if (!reader.IsDBNull(4))
@@ -185,14 +182,14 @@ namespace HWA.ECom.Repository
                             customerOrder.ShipToAddressId = reader.GetString(6);
                         if (!reader.IsDBNull(7))
                             customerOrder.OrderNumber = reader.GetString(7);
-                        if (!reader.IsDBNull(8))
-                            customerOrder.CreatedBy = reader.GetString(8);
+                        if (!reader.IsDBNull(10))
+                            customerOrder.CreatedBy =  reader.GetString(10);
                         if (!reader.IsDBNull(9))
                             customerOrder.CreatedDate = reader.GetDateTime(9);
-                        if (!reader.IsDBNull(10))
-                            customerOrder.LastModifiedBy = reader.GetString(10);
                         if (!reader.IsDBNull(11))
-                            customerOrder.LastModifiedDate = reader.GetDateTime(11);
+                            customerOrder.LastModifiedBy = reader.GetString(11);
+                        if (!reader.IsDBNull(8))
+                            customerOrder.LastModifiedDate = reader.GetDateTime(8);
                         customerOrders.Add(customerOrder);
                         //TO BE DONE, ORM process, map table data to class object
                     }

@@ -11,7 +11,7 @@ namespace HWA.ECom.Web.Controllers
 {
     public class ProductController : Controller
     {
-        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.EComDb);
+        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.MyConnectionString);
 
         Customer customer;
         ShoppingCart shoppingCart; 
@@ -28,11 +28,16 @@ namespace HWA.ECom.Web.Controllers
             shoppingCart = new ShoppingCart(customer.Id);
             // create a ShoppingCartRepository scr object
             //use scr to save shoppingCart
+            ShoppingCartRepository scr = new ShoppingCartRepository(ConstantUtil.MyConnectionString);
+            scr.Insert(shoppingCart);
 
 
             ShoppingCartProduct scp = new ShoppingCartProduct(shoppingCart.Id, id);
+            scp.Quantity = 100;
             //create a ShoppinngCartProductRepository scpr
             //use scpr to save scp
+            ShoppingCartProductRepository scpr = new ShoppingCartProductRepository(ConstantUtil.MyConnectionString);
+            scpr.Create(scp);
             return "Add product " + id + " to the cart successfully!";
         }
 

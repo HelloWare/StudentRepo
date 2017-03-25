@@ -33,11 +33,12 @@ namespace HWA.Ecom.Repository
                 SqlCommand cmd = new SqlCommand("usp_ECom_InsertShoppingCart", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("CustomerId", shoppingCart.CustomerId);
-                cmd.Parameters.AddWithValue("GrandTotal", shoppingCart.GrandTotal);
-                cmd.Parameters.AddWithValue("CreatedBy", shoppingCart.CreatedBy);
-                cmd.Parameters.AddWithValue("CreatedDate", shoppingCart.CreatedDate);
-                cmd.Parameters.AddWithValue("LastModifiedBy", shoppingCart.CreatedBy);
-                cmd.Parameters.AddWithValue("LastModifiedDate", shoppingCart.CreatedDate);
+                     cmd.Parameters.AddWithValue("GrandTotal", shoppingCart.GrandTotal);
+                //if (shoppingCart.CreatedBy != null)
+                    cmd.Parameters.AddWithValue("CreatedBy", "Deyi");
+                    cmd.Parameters.AddWithValue("CreatedDate", DateTime.Now);
+                    cmd.Parameters.AddWithValue("LastModifiedBy", "Deyi");
+                    cmd.Parameters.AddWithValue("LastModifiedDate", DateTime.Now);
                 SqlParameter retval = cmd.Parameters.Add("Return", SqlDbType.Int);
                 retval.Direction = System.Data.ParameterDirection.ReturnValue;
                 if (cmd.ExecuteNonQuery() == 1)
