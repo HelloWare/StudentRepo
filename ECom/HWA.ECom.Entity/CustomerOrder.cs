@@ -9,6 +9,11 @@ namespace HWA.ECom.Entity
 {
     public class CustomerOrder:BaseEntity
     {
+        public CustomerOrder(int CustomerId, int StatusId)
+        {
+            this.CustomerId = CustomerId;
+            this.StatusId = StatusId;
+        }
         public int CustomerId{ get; set; }
         public int StatusId { get; set; }
         public decimal GrandTotal { get; set; }

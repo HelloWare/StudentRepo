@@ -4,3 +4,8 @@ ECom/HWA.ECom.Web/HWA.ECom.Web.csproj
 ECom/HWA.ECom.Web/HWA.ECom.Web.csproj
 ECom/HWA.ECom.Web/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.suo
+*.dll
+*.pdb
+*.dll
+*.cache
+*.dll
