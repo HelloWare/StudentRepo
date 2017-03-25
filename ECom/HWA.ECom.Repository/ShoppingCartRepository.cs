@@ -12,7 +12,6 @@ namespace HWA.Ecom.Repository
     {
         #region Fields
         private String _connectionString;
-        //private object products;
         #endregion
 
         #region Constructors
@@ -26,7 +25,6 @@ namespace HWA.Ecom.Repository
         #endregion
         public Boolean Insert(ShoppingCart shoppingCart)
         {
-            //      using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EComConnection"].ConnectionString))
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
@@ -53,7 +51,7 @@ namespace HWA.Ecom.Repository
                 con.Open();
                 SqlCommand cmd = new SqlCommand("usp_ECom_UpdateShoppingCart", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("CustomerId", shoppingCart.CustomerId);
+                // cmd.Parameters.AddWithValue("CustomerId", shoppingCart.CustomerId); removed from SP
                 cmd.Parameters.AddWithValue("GrandTotal", shoppingCart.GrandTotal);
                 cmd.Parameters.AddWithValue("LastModifiedBy", shoppingCart.LastModifiedBy);
                 cmd.Parameters.AddWithValue("LastModifiedDate", shoppingCart.LastModifiedDate);
@@ -120,14 +118,31 @@ namespace HWA.Ecom.Repository
                 ShoppingCart shoppingCart;// = new ShoppingCart();
                 while (reader.Read())
                 {
+
                     shoppingCart = new ShoppingCart(customerId);
-                    shoppingCart.Id = Convert.ToInt32(reader["Id"]);
+                    if (!reader.IsDBNull(1))
+                    { shoppingCart.Id = Convert.ToInt32(reader["Id"]); }
                     //shoppingCart.CustomerId = customerId;
-                    shoppingCart.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
-                    shoppingCart.CreatedBy = Convert.ToString(reader["CreatedBy"]);
-                    shoppingCart.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                    shoppingCart.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
-                    shoppingCart.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                    if (!reader.IsDBNull(3))
+                    {
+                        shoppingCart.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
+                    }
+                    if (!reader.IsDBNull(4))
+                    {
+                        shoppingCart.CreatedBy = Convert.ToString(reader["CreatedBy"]);
+                    }
+                    if (!reader.IsDBNull(5))
+                    {
+                        shoppingCart.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
+                    }
+                    if (!reader.IsDBNull(6))
+                    {
+                        shoppingCart.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
+                    }
+                    if (!reader.IsDBNull(7))
+                    {
+                        shoppingCart.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                    }
                     return shoppingCart;
 
                 }
@@ -148,44 +163,35 @@ namespace HWA.Ecom.Repository
                 while (reader.Read())
                 {
                     shoppingCart = new ShoppingCart(Convert.ToInt32(reader["CustomerId"]));
-                    shoppingCart.Id = Convert.ToInt32(reader["Id"]);
+                    if (!reader.IsDBNull(1))
+                    {
+                        shoppingCart.Id = Convert.ToInt32(reader["Id"]);
+                    }
                     //shoppingCart.CustomerId = Convert.ToInt32(reader["CustomerId"]);
-                    shoppingCart.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
-                    shoppingCart.CreatedBy = Convert.ToString(reader["CreatedBy"]);
-                    shoppingCart.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                    shoppingCart.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
-                    shoppingCart.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                    if (!reader.IsDBNull(3))
+                    {
+                        shoppingCart.GrandTotal = Convert.ToDecimal(reader["GrandTotal"]);
+                    }
+                    if (!reader.IsDBNull(4))
+                    {
+                        shoppingCart.CreatedBy = Convert.ToString(reader["CreatedBy"]);
+                    }
+                    if (!reader.IsDBNull(5))
+                    {
+                        shoppingCart.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
+                    }
+                    if (!reader.IsDBNull(6))
+                    {
+                        shoppingCart.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
+                    }
+                    if (!reader.IsDBNull(7))
+                    {
+                        shoppingCart.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                    }
                     shoppingCartList.Add(shoppingCart);
                 }
                 return shoppingCartList;
             }
         }
-        // 1 List<ShoppingCartProduct> products   (done, products is shoppingcart name)
-        //2  AddProduct(Product product, int qty)
-        //        {
-        //            ShoppingCartProduct scProduct = new ShoppingCartProduct(product, qty);
-        //            this.products.Insert(scProduct);
-        //        }
-        //3  DeleteProduct(Product product)
-        //        {
-        //            ShoppingCartProduct scProduct = new ShoppingCartProduct(product, qty);
-        //            this.products.delete(scProduct);
-        //        }
-
-        //4 CheckOut()
-         //{
-        //            ShoppingCartProduct scProduct = new ShoppingCartProduct(product, qty);
-        //            this.products.delete(scProduct);
-        //        }
-        //5  EmptyShoppingCart()
-
-        //public Boolean AddProduct(Product product, int qty)
-        //{
-        //    ShoppingCartProduct scProduct = new ShoppingCartProduct();
-        //    this.products.Insert(scProduct);
-        //    return ture;
-
-        //}
-
     }
 }
