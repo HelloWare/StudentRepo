@@ -112,32 +112,75 @@ namespace HWA.ECom.Repository
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("usp_ECom_GetCustomerOrderProduct", con);
+                SqlCommand cmd = new SqlCommand("usp_ECom_CustomerOrderProduct_Select", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("Id", id);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-                CustomerOrderProduct customerOrderProduct = new CustomerOrderProduct();
+                CustomerOrderProduct customerOrderProduct;
                 while (reader.Read())
                 {
-                    customerOrderProduct.Id = id;
-                    customerOrderProduct.CustomerOrderId = Convert.ToInt32(reader["CustomerOrderId"]);
-                    customerOrderProduct.ProductId = Convert.ToInt32(reader["ProductId"]);
-                    customerOrderProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
-                    customerOrderProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
-                    customerOrderProduct.Tax = Convert.ToDecimal(reader["Tax"]);
-                    customerOrderProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
-                    customerOrderProduct.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
-                    customerOrderProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                    customerOrderProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
-                    customerOrderProduct.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
-                    //TO BE DONE, ORM process, map table data to class object
 
+                    if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+                    {
+                        customerOrderProduct = new CustomerOrderProduct(reader.GetInt32(0), reader.GetInt32(1));
+
+
+                        if (!reader.IsDBNull(2))
+                        {
+                            customerOrderProduct.Quantity = reader.GetDecimal(2);
+                        }
+
+                        if (!reader.IsDBNull(3))
+                        {
+                            customerOrderProduct.UnitPrice = reader.GetDecimal(3);
+                        }
+
+                        if (!reader.IsDBNull(4))
+                        {
+                            customerOrderProduct.Tax = reader.GetDecimal(4);
+                        }
+
+                        if (!reader.IsDBNull(5))
+                        {
+                            customerOrderProduct.UnitOfMeasure = reader.GetString(5);
+                        }
+
+                        if (!reader.IsDBNull(6))
+                        {
+                            customerOrderProduct.Subtotal = reader.GetString(6);
+                        }
+
+                        if (!reader.IsDBNull(7))
+                        {
+                            customerOrderProduct.CreatedDate = reader.GetDateTime(7);
+                        }
+
+                        if (!reader.IsDBNull(8))
+                        {
+                            customerOrderProduct.LastModifiedDate = reader.GetDateTime(8);
+                        }
+
+                        if (!reader.IsDBNull(9))
+                        {
+                            customerOrderProduct.CreatedBy = reader.GetString(9);
+                        }
+
+                        if (!reader.IsDBNull(10))
+                        {
+                            customerOrderProduct.LastModifiedBy = reader.GetString(10);
+                        }
+                        return customerOrderProduct;
+
+                    }
+                    //TO BE DONE, ORM process, map table data to class object
                 }
-                return customerOrderProduct;
             }
+            return null;
         }
+
+
 
         public List<CustomerOrderProduct> GetAll()
         {
@@ -148,29 +191,81 @@ namespace HWA.ECom.Repository
 
 
                 SqlDataReader reader = cmd.ExecuteReader();
+                //CustomerOrderProduct customerOrderProducts;
                 List<CustomerOrderProduct> customerOrderProducts = new List<CustomerOrderProduct>();
+                CustomerOrderProduct customerOrderProduct;
+
                 while (reader.Read())
                 {
-                    CustomerOrderProduct customerOrderProduct = new CustomerOrderProduct();
-                    customerOrderProduct.CustomerOrderId = Convert.ToInt32(reader["CustomerOrderId"]);
-                    customerOrderProduct.ProductId = Convert.ToInt32(reader["ProductId"]);
-                    customerOrderProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
-                    customerOrderProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
-                    customerOrderProduct.Tax = Convert.ToDecimal(reader["Tax"]);
-                    customerOrderProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
-                    customerOrderProduct.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
-                    customerOrderProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                    customerOrderProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
-                    customerOrderProduct.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
-                    customerOrderProducts.Add(customerOrderProduct);
-                    //TO BE DONE, ORM process, map table data to class object
+                    //customerOrderProducts = new CustomerOrderProduct(reader.GetInt32(0), reader.GetInt32(1));
+
+                    //customerOrderProduct.CustomerOrderId = reader.GetInt32(0);
+                    if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+                    {
+                        customerOrderProduct = new CustomerOrderProduct(reader.GetInt32(0), reader.GetInt32(1));
+
+
+                        if (!reader.IsDBNull(2))
+                        {
+                            customerOrderProduct.ProductId = reader.GetInt32(2);
+                        }
+
+                        if (!reader.IsDBNull(3))
+                        {
+                            customerOrderProduct.Quantity = reader.GetDecimal(3);
+                        }
+
+                        if (!reader.IsDBNull(4))
+                        {
+                            customerOrderProduct.UnitPrice = reader.GetDecimal(4);
+                        }
+
+                        if (!reader.IsDBNull(5))
+                        {
+                            customerOrderProduct.Tax = reader.GetDecimal(5);
+                        }
+
+                        if (!reader.IsDBNull(6))
+                        {
+                            customerOrderProduct.UnitOfMeasure = reader.GetString(6);
+                        }
+
+                        if (!reader.IsDBNull(7))
+                        {
+                            customerOrderProduct.Subtotal = reader.GetString(7);
+                        }
+
+                        if (!reader.IsDBNull(8))
+                        {
+                            customerOrderProduct.CreatedDate = reader.GetDateTime(8);
+                        }
+
+                        if (!reader.IsDBNull(9))
+                        {
+                            customerOrderProduct.LastModifiedDate = reader.GetDateTime(9);
+                        }
+
+                        if (!reader.IsDBNull(10))
+                        {
+                            customerOrderProduct.CreatedBy = reader.GetString(10);
+                        }
+
+                        if (!reader.IsDBNull(11))
+                        {
+                            customerOrderProduct.LastModifiedBy = reader.GetString(11);
+                        }
+
+                        customerOrderProducts.Add(customerOrderProduct);
+                        //TO BE DONE, ORM process, map table data to class object
+
+
+                    }
+
 
                 }
                 return customerOrderProducts;
             }
+
         }
-
-
-
     }
 }
