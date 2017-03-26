@@ -12,3 +12,8 @@ D:\Dropbox\IT Training\Github_0\StudentRepo\ECom\HWA.ECom.Entity\bin\Debug\HWA.E
 D:\Dropbox\IT Training\Github_0\StudentRepo\ECom\HWA.ECom.Entity\obj\Debug\HWA.ECom.Entity.csprojResolveAssemblyReference.cache
 D:\Dropbox\IT Training\Github_0\StudentRepo\ECom\HWA.ECom.Entity\obj\Debug\HWA.ECom.Entity.dll
 D:\Dropbox\IT Training\Github_0\StudentRepo\ECom\HWA.ECom.Entity\obj\Debug\HWA.ECom.Entity.pdb
+C:\Users\Amy Mao\Desktop\HellowareBootcamp\Project\StudentRepo\ECom\HWA.ECom.Entity\obj\Debug\HWA.ECom.Entity.csprojResolveAssemblyReference.cache
+C:\Users\Amy Mao\Desktop\HellowareBootcamp\Project\StudentRepo\ECom\HWA.ECom.Entity\obj\Debug\HWA.ECom.Entity.dll
+C:\Users\Amy Mao\Desktop\HellowareBootcamp\Project\StudentRepo\ECom\HWA.ECom.Entity\obj\Debug\HWA.ECom.Entity.pdb
+C:\Users\Amy Mao\Desktop\HellowareBootcamp\Project\StudentRepo\ECom\HWA.ECom.Entity\bin\Debug\HWA.ECom.Entity.dll
+C:\Users\Amy Mao\Desktop\HellowareBootcamp\Project\StudentRepo\ECom\HWA.ECom.Entity\bin\Debug\HWA.ECom.Entity.pdb

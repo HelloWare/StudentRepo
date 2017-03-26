@@ -28,11 +28,18 @@ namespace HWA.ECom.Web.Controllers
             cor.Delete(id);
             return "You successfully deleted the order with id: " + id;
         }
-
-        public ActionResult Edit(int id)
+        public int GetStatusId(int id)
         {
-            
-            return View();
+            StatusRepository sr = new StatusRepository(ConstantUtil.MyConnectionString);
+
+            ViewBag.Status=sr.GetById(id);
+            return ViewBag();
+        }
+        public ActionResult Edit(int statusId)
+        {
+            CustomerOrderRepository cor = new CustomerOrderRepository(ConstantUtil.MyConnectionString);
+            List<CustomerOrder> customerOrders = cor.GetCustomerOrderWithStatusId(statusId);
+            return View(customerOrders);
         }
     }
 }

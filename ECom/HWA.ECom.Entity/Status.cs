@@ -8,6 +8,8 @@ namespace HWA.ECom.Entity
 {
     public class Status:BaseEntity
     {
+
+       
         public string Name { get; set; }
     }
 }
