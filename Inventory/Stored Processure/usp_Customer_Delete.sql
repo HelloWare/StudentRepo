@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Customer_Delete]    Script Date: 2017/3/23 20:19:10 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Customer_Delete]    Script Date: 2017/3/26 12:53:53 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -14,7 +15,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[usp_Customer_Delete]
-	@Id int
+	@Id INT
 AS
 BEGIN
 	
@@ -25,6 +26,7 @@ BEGIN
 
 	 RETURN @@IDENTITY
 END
+
 
 GO
 

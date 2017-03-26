@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Product_Insert]    Script Date: 2017/3/23 20:21:27 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Product_Insert]    Script Date: 2017/3/26 12:56:01 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -16,32 +17,35 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[usp_Product_Insert]
 	-- Add the parameters for the stored procedure here
+	@CategoryId INT,
 	@Name VARCHAR(50),
 	@UnitPrice DECIMAL,
 	@StockQuantity DECIMAL,
 	@Description VARCHAR(200),
-	@Sequence INT,
-	@IsActive BIT,
-	@Comment VARCHAR(200),
-	@CreatedBy VARCHAR(25),
-	@CreatedDate DATETIME,
-	@LastModifiedBy VARCHAR(25),
-	@LastModifiedDate DATETIME,
 	@UnitOfMeasure VARCHAR(25),
-	@CategoryId INT,
+	@IsActive BIT,
+	@Sequence INT,
 	@IconUrl VARCHAR(100),
-	@PictureUrl VARCHAR(100)
+	@PictureUrl VARCHAR(100),
+	@Comment VARCHAR(200),
+	@CreatedDate DATETIME,
+	@CreatedBy VARCHAR(25),
+	@LastModifiedBy VARCHAR(25),
+	@LastModifiedDate DATETIME
+	
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    INSERT [dbo].[Product] (Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate, UnitOfMeasure, CategoryId, IconUrl, PictureUrl)
-	VALUES (@Name, @UnitPrice, @StockQuantity, @Description, @Sequence, @IsActive, @Comment, @CreatedBy, @CreatedDate, @LastModifiedBy, @LastModifiedDate, @UnitOfMeasure, @CategoryId, @IconUrl, @PictureUrl)
+    INSERT [dbo].[Product] (CategoryId, Name, UnitPrice, StockQuantity, Description, UnitOfMeasure, IsActive, Sequence, IconUrl, PictureUrl, Comment, CreatedDate, CreatedBy, LastModifiedBy, LastModifiedDate )
+	VALUES (@CategoryId, @Name, @UnitPrice, @StockQuantity, @Description, @UnitOfMeasure, @IsActive, @Sequence, @IconUrl, @PictureUrl, @Comment, @CreatedDate, @CreatedBy, @LastModifiedBy, @LastModifiedDate)
 
 	RETURN @@IDENTITY
 END
+
 
 
 GO

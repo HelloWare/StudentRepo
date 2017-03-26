@@ -1,19 +1,20 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Customer_Get]    Script Date: 2017/3/23 20:19:29 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Customer_GetById]    Script Date: 2017/3/26 12:54:13 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
+
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_Customer_Get] 
+CREATE PROCEDURE [dbo].[usp_Customer_GetById] 
 	-- Add the parameters for the stored procedure here
 	@Id INT
 AS
@@ -26,6 +27,7 @@ BEGIN
 	FROM [dbo].[Customer]
 	WHERE Id = @Id
 END
+
 
 GO
 

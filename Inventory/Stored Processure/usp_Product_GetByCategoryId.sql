@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Product_GetByCategoryId]    Script Date: 2017/3/23 20:21:06 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Product_GetByCategoryId]    Script Date: 2017/3/26 12:55:25 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -28,6 +29,7 @@ BEGIN
 	FROM [dbo].[Product]
 	WHERE CategoryId = @CategoryId
 END
+
 
 
 GO

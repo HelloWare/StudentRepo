@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Product_GetAll]    Script Date: 2017/3/23 20:20:49 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Product_GetAll]    Script Date: 2017/3/26 12:55:15 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -23,9 +24,10 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    SELECT Id, Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate, UnitOfMeasure, CategoryId, IconUrl, PictureUrl
+    SELECT Id, CategoryId, Name, UnitPrice, StockQuantity, Description, UnitOfMeasure, IsActive, Sequence, IconUrl, PictureUrl, Comment, CreatedDate, CreatedBy, LastModifiedBy, LastModifiedDate
 	FROM [dbo].[Product]
 END
+
 
 
 GO

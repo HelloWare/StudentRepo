@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="ConstantUtil.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -239,7 +240,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Inventory\Create.cshtml" />
-    <Content Include="Views\Product\ListAllProducts.cshtml" />
     <Content Include="Views\Customer\InsertView.cshtml" />
     <Content Include="Views\Customer\Insert.cshtml" />
     <Content Include="Views\Customer\ShowAllList.cshtml" />
@@ -247,6 +247,14 @@
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Order\ListAllOrders.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Category\InsertView.cshtml" />
+    <Content Include="Views\Category\ShowDetail.cshtml" />
+    <Content Include="Views\Category\ShowAllList.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Product\ShowAllList.cshtml" />
+    <Content Include="Views\Product\ShowDetail.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\InsertView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
