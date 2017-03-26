@@ -8,12 +8,7 @@ namespace HWA.ECom.Entity
 {
     public class Category : BaseEntity
     {
-        //public Category(int id, string name, bool isActive)
-        //{
-        //    this.Id = id;
-        //    this.Name = name;
-        //    this.IsActive = isActive;
-        //}
+        
 
         public string Name { get; set; }
         public string Description { get; set; }

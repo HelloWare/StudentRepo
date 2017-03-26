@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Customer_Insert]    Script Date: 2017/3/23 20:19:47 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Customer_Insert]    Script Date: 2017/3/26 12:54:48 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		Shawn Shi
@@ -15,8 +16,8 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[usp_Customer_Insert]
 	@UserName VARCHAR(25),
-	@FirstName VARCHAR(25),
-	@LastName VARCHAR(25),
+	@FirstName VARCHAR(50),
+	@LastName VARCHAR(50),
 	@CreatedBy VARCHAR(25),
 	@CreatedDate DATETIME,
 	@LastModifiedBy VARCHAR(25),
@@ -31,6 +32,7 @@ BEGIN
 	RETURN @@IDENTITY
    
 END
+
 
 GO
 

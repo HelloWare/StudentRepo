@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Category_GetAll]    Script Date: 2017/3/23 20:18:41 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Category_GetAll]    Script Date: 2017/3/26 12:52:59 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -26,6 +27,7 @@ BEGIN
     SELECT Id, Name, Description, IsActive, Sequence, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate
 	FROM [dbo].[Category]
 END
+
 
 
 GO

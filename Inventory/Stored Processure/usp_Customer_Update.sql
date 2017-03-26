@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Customer_Update]    Script Date: 2017/3/23 20:19:57 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Customer_Update]    Script Date: 2017/3/26 12:54:56 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -17,9 +18,9 @@ CREATE PROCEDURE [dbo].[usp_Customer_Update]
 	-- Add the parameters for the stored procedure here
 	@Id INT,
 	@UserName VARCHAR(25),
-	@FirstName VARCHAR(25),
-	@LastName VARCHAR(25),
-	@CreatedBy VARCHAR(50),
+	@FirstName VARCHAR(50),
+	@LastName VARCHAR(50),
+	@CreatedBy VARCHAR(25),
 	@CreatedDate DATETIME,
 	@LastModifiedBy VARCHAR(25),
 	@LastModifiedDate DATETIME
@@ -33,6 +34,7 @@ BEGIN
 	SET  UserName = @UserName, FirstName = @FirstName, LastName = @LastName, CreatedBy = @CreatedBy, CreatedDate = @CreatedDate, LastModifiedBy = @LastModifiedBy, LastModifiedDate = @LastModifiedDate
 	WHERE Id = @Id
 END
+
 
 GO
 

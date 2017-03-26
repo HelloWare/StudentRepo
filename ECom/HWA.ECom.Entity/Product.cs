@@ -8,13 +8,15 @@ namespace HWA.ECom.Entity
 {
     public class Product : BaseEntity
     {
-        //public Product(int id, int categoryId, string name, bool isActive)
-        //{
-        //    this.Id = id;
-        //    this.CategoryId = categoryId;
-        //    this.Name = name;
-        //    this.IsActive = isActive;
-        //}
+        public Product()
+        {
+            
+        }
+
+        public Product(int categoryId)
+        {
+            this.CategoryId = categoryId;
+        }
 
         public int CategoryId { get; set; }
         public string Name { get; set; }
@@ -28,8 +30,5 @@ namespace HWA.ECom.Entity
         public string PictureUrl { get; set; }
         public string Comment { get; set; }
 
-
-
- 
     }
 }

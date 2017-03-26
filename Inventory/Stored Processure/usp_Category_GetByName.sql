@@ -1,7 +1,7 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Customer_GetByName]    Script Date: 2017/3/25 16:29:22 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Category_GetByName]    Script Date: 2017/3/26 12:53:23 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,18 +13,18 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_Customer_GetByName]
+CREATE PROCEDURE [dbo].[usp_Category_GetByName] 
 	-- Add the parameters for the stored procedure here
-	@UserName VARCHAR(25)
+	@Name VARCHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    SELECT Id, UserName, FirstName, LastName, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate
-	FROM [dbo].[Customer]
-	WHERE UserName = @UserName
+    SELECT Id, Name, Description, IsActive, Sequence, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate
+	FROM [dbo].[Category]
+	WHERE Name = @Name
 END
 
 GO

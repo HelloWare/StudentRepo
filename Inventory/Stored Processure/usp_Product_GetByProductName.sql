@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Product_GetByProductName]    Script Date: 2017/3/23 20:21:16 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Product_GetByProductName]    Script Date: 2017/3/26 12:55:54 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -26,6 +27,7 @@ BEGIN
 	FROM [dbo].[Product]
 	WHERE Name = @Name
 END
+
 
 GO
 

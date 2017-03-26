@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Product_Update]    Script Date: 2017/3/23 20:21:41 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Product_Update]    Script Date: 2017/3/26 12:56:09 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -42,6 +43,7 @@ BEGIN
 	SET  Name = @Name, UnitPrice = @UnitPrice, StockQuantity = @StockQuantity, Description = @Description, Sequence = @Sequence, IsActive = @IsActive, Comment = @Comment, UnitOfMeasure = @UnitOfMeasure, CategoryId = @CategoryId, IconUrl = @IconUrl, PictureUrl = @PictureUrl, CreatedBy = @CreatedBy, CreatedDate = @CreatedDate, LastModifiedBy = @LastModifiedBy, LastModifiedDate = @LastModifiedDate
 	WHERE Id = @Id
 END
+
 
 
 GO

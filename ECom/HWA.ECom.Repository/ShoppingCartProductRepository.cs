@@ -30,8 +30,8 @@ namespace HWA.Ecom.Repository
                 cmd.Parameters.AddWithValue("UnitPrice", shoppingCartProduct.UnitPrice);
                 cmd.Parameters.AddWithValue("UnitOfMeasure", shoppingCartProduct.UnitOfMeasure);
                 cmd.Parameters.AddWithValue("SubTotal", shoppingCartProduct.SubTotal);
-                cmd.Parameters.AddWithValue("CreatedBy", "Deyi");
-                cmd.Parameters.AddWithValue("CreatedDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("CreatedBy", shoppingCartProduct.CreatedBy);
+                cmd.Parameters.AddWithValue("CreatedDate", shoppingCartProduct.CreatedDate);
                 SqlParameter retval = cmd.Parameters.Add("Return", SqlDbType.Int);
                 retval.Direction = System.Data.ParameterDirection.ReturnValue;
                 if (cmd.ExecuteNonQuery() == 1)
@@ -98,16 +98,14 @@ namespace HWA.Ecom.Repository
                 {
                     shoppingCartProduct = new ShoppingCartProduct(Convert.ToInt32(reader["ShoppingCartId"]), Convert.ToInt32(reader["ProductId"]));
                     shoppingCartProduct.Id = Convert.ToInt32(reader["Id"]);
-                    //shoppingCartProduct.ShoppingCartId = Convert.ToInt32(reader["ShoppingCartId"]);
-                    //shoppingCartProduct.ProductId = Convert.ToInt32(reader["ProductId"]);
-                    shoppingCartProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
-                    shoppingCartProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
-                    shoppingCartProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
-                    shoppingCartProduct.SubTotal = Convert.ToDecimal(reader["SubTotal"]);
-                    shoppingCartProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
+                    if(reader["Quantity"] !=null) shoppingCartProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
+                    if (reader["UnitPrice"] != null) shoppingCartProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
+                    if (reader["UnitOfMeasure"] != null) shoppingCartProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
+                    if (reader["SubTotal"] != null) shoppingCartProduct.SubTotal = Convert.ToDecimal(reader["SubTotal"]);
+                    if (reader["CreatedBy"] != null) shoppingCartProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
                     shoppingCartProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                    shoppingCartProduct.LastModifiedBy = Convert.ToString(reader["ModifiedBy"]);
-                    shoppingCartProduct.LastModifiedDate = Convert.ToDateTime(reader["ModifiedDate"]);
+                    if (reader["ModifiedBy"] != null) shoppingCartProduct.LastModifiedBy = Convert.ToString(reader["ModifiedBy"]);
+                    if (reader["ModifiedDate"] != null) shoppingCartProduct.LastModifiedDate = Convert.ToDateTime(reader["ModifiedDate"]);
                     return shoppingCartProduct;
                 }
                 return null;
@@ -124,22 +122,19 @@ namespace HWA.Ecom.Repository
                 cmd.Parameters.AddWithValue("ShoppingCartId", shoppingCartId);
                 SqlDataReader reader = cmd.ExecuteReader();
                 List<ShoppingCartProduct> shoppingCartProductList = new List<ShoppingCartProduct> { };
-                ShoppingCartProduct shoppingCartProduct;// = new ShoppingCartProduct();
+                ShoppingCartProduct shoppingCartProduct;
                 while (reader.Read())
                 {
                     shoppingCartProduct = new ShoppingCartProduct(Convert.ToInt32(reader["ShoppingCartId"]), Convert.ToInt32(reader["ProductId"]));
                     shoppingCartProduct.Id = Convert.ToInt32(reader["Id"]);
-
-                    //shoppingCartProduct.ShoppingCartId = Convert.ToInt32(reader["ShoppingCartId"]);
-                    //shoppingCartProduct.ProductId = Convert.ToInt32(reader["ProductId"]);
-                    shoppingCartProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
-                    shoppingCartProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
-                    shoppingCartProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
-                    shoppingCartProduct.SubTotal = Convert.ToDecimal(reader["SubTotal"]);
-                    shoppingCartProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
+                    if (reader["Quantity"] != null) shoppingCartProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
+                    if (reader["UnitPrice"] != null) shoppingCartProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
+                    if (reader["UnitOfMeasure"] != null) shoppingCartProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
+                    if (reader["SubTotal"] != null) shoppingCartProduct.SubTotal = Convert.ToDecimal(reader["SubTotal"]);
+                    if (reader["CreatedBy"] != null) shoppingCartProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
                     shoppingCartProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
-                    shoppingCartProduct.LastModifiedBy = Convert.ToString(reader["ModifiedBy"]);
-                    shoppingCartProduct.LastModifiedDate = Convert.ToDateTime(reader["ModifiedDate"]);
+                    if (reader["ModifiedBy"] != null) shoppingCartProduct.LastModifiedBy = Convert.ToString(reader["ModifiedBy"]);
+                    if (reader["ModifiedDate"] != null) shoppingCartProduct.LastModifiedDate = Convert.ToDateTime(reader["ModifiedDate"]);
                     shoppingCartProductList.Add(shoppingCartProduct);
                 }
                 return shoppingCartProductList;

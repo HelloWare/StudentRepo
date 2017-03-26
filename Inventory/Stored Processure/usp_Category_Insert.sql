@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Category_Insert]    Script Date: 2017/3/23 20:18:49 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Category_Insert]    Script Date: 2017/3/26 12:53:33 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -35,6 +36,7 @@ BEGIN
 
 	RETURN @@IDENTITY
 END
+
 
 
 GO

@@ -1,33 +1,31 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Product_Get]    Script Date: 2017/3/23 20:20:36 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Product_GetByName]    Script Date: 2017/3/26 12:55:46 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_Product_Get]
+CREATE PROCEDURE [dbo].[usp_Product_GetByName] 
 	-- Add the parameters for the stored procedure here
-	@Id INT
+	@Name VARCHAR(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    SELECT Id, Name, UnitPrice, StockQuantity, Description, Sequence, IsActive, Comment, UnitOfMeasure, IconUrl, PictureUrl, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate, CategoryId
+    SELECT Id, CategoryId, Name, UnitPrice, StockQuantity, Description, UnitOfMeasure, IsActive, Sequence, IconUrl, PictureUrl, Comment, CreatedDate, CreatedBy, LastModifiedBy, LastModifiedDate
 	FROM [dbo].[Product]
-	WHERE Id = @Id
+	WHERE Name = @Name
 END
-
 
 GO
 

@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Product_Delete]    Script Date: 2017/3/23 20:20:27 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Product_Delete]    Script Date: 2017/3/26 12:55:06 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -26,6 +27,7 @@ BEGIN
     DELETE FROM [dbo].[Product]
 	 WHERE [Id] = @Id
 END
+
 
 
 GO

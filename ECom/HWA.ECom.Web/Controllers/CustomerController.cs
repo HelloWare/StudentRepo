@@ -11,7 +11,7 @@ namespace HWA.ECom.Web.Controllers
     public class CustomerController : Controller
     {
 
-        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.MyConnectionString);
+        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.EComDb);
 
         public ActionResult Index()
         {
@@ -21,6 +21,12 @@ namespace HWA.ECom.Web.Controllers
         public ActionResult InsertView()
         {
             return View();
+        }
+
+        public ActionResult ShowDetail(int id)
+        {
+            
+            return View("ShowDetail", customerRepo.GetById(id));
         }
 
         public ActionResult Insert(Customer customer)

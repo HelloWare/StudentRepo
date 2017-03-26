@@ -1,22 +1,21 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Customer_GetById]    Script Date: 2017/3/25 16:29:13 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Customer_GetByName]    Script Date: 2017/3/26 12:54:29 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_Customer_GetById] 
+CREATE PROCEDURE [dbo].[usp_Customer_GetByName]
 	-- Add the parameters for the stored procedure here
-	@Id INT
+	@UserName VARCHAR(25)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -25,9 +24,8 @@ BEGIN
 
     SELECT Id, UserName, FirstName, LastName, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate
 	FROM [dbo].[Customer]
-	WHERE Id = @Id
+	WHERE UserName = @UserName
 END
-
 
 GO
 

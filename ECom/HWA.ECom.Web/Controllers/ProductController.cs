@@ -11,15 +11,60 @@ namespace HWA.ECom.Web.Controllers
 {
     public class ProductController : Controller
     {
-        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.MyConnectionString);
+        ProductRepository productRepo = new ProductRepository(ConstantUtil.EComDb);
+        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.EComDb);
 
         Customer customer;
-        ShoppingCart shoppingCart; 
-        // GET: Product
+        ShoppingCart shoppingCart;
+
         public ActionResult Index()
         {
             return View();
         }
+
+        public ActionResult InsertView()
+        {
+            return View();
+        }
+
+        public ActionResult ShowDetail(int id)
+        {
+
+            return View("ShowDetail", productRepo.GetById(id));
+        }
+
+        public ActionResult Insert(Product product)
+        {
+            productRepo.Insert(product);
+            Product _product = new Product(product.CategoryId);
+            _product = productRepo.GetByName(product.Name);
+            return View("ShowDetail", _product);
+        }
+
+        public ActionResult ShowAllList()
+        {
+
+            return View(productRepo.GetAll());
+        }
+
+        public ActionResult Delete(int id)
+        {
+            productRepo.Delete(id);
+            return View("ShowAllList", productRepo.GetAll());
+        }
+
+        public ActionResult Edit(int id)
+        {
+
+            return View(productRepo.GetById(id));
+        }
+
+        public ActionResult Update(Product product)
+        {
+            productRepo.Update(product);
+            return View("ShowDetail", productRepo.GetById(product.Id));
+        }
+
 
         public String AddToCart(int id)
         {
@@ -28,7 +73,7 @@ namespace HWA.ECom.Web.Controllers
             shoppingCart = new ShoppingCart(customer.Id);
             // create a ShoppingCartRepository scr object
             //use scr to save shoppingCart
-            ShoppingCartRepository scr = new ShoppingCartRepository(ConstantUtil.MyConnectionString);
+            ShoppingCartRepository scr = new ShoppingCartRepository(ConstantUtil.EComDb);
             scr.Insert(shoppingCart);
 
 
@@ -36,24 +81,9 @@ namespace HWA.ECom.Web.Controllers
             scp.Quantity = 100;
             //create a ShoppinngCartProductRepository scpr
             //use scpr to save scp
-            ShoppingCartProductRepository scpr = new ShoppingCartProductRepository(ConstantUtil.MyConnectionString);
+            ShoppingCartProductRepository scpr = new ShoppingCartProductRepository(ConstantUtil.EComDb);
             scpr.Create(scp);
             return "Add product " + id + " to the cart successfully!";
-        }
-
-        public ActionResult ListAllProducts()
-        {
-            ProductRepository productRepository = new ProductRepository(ConstantUtil.MyConnectionString);
-            IEnumerable<Product> products = productRepository.GetAll();
-            return View(products);
-        }
-        public ActionResult Create(Product product)
-        {
-            ProductRepository productRespository = new ProductRepository(ConstantUtil.MyConnectionString);
-
-            productRespository.Insert(product);
-
-            return View(product);
         }
     }
 }

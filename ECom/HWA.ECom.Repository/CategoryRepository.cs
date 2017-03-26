@@ -36,8 +36,8 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("IsActive", category.IsActive);
                 cmd.Parameters.AddWithValue("Sequence", category.Sequence);
                 if (category.CreatedBy != null)
-                    cmd.Parameters.AddWithValue("CreateBy", category.CreatedBy);
-                cmd.Parameters.AddWithValue("CreateDate", category.CreatedDate);
+                    cmd.Parameters.AddWithValue("CreatedBy", category.CreatedBy);
+                cmd.Parameters.AddWithValue("CreatedDate", category.CreatedDate);
                 if (category.CreatedBy != null)
                     cmd.Parameters.AddWithValue("LastModifiedBy", category.LastModifiedBy);
                 if (category.LastModifiedDate != null)
@@ -85,8 +85,8 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("IsActive", category.IsActive);
                 cmd.Parameters.AddWithValue("Sequence", category.Sequence);
                 if (category.CreatedBy != null)
-                    cmd.Parameters.AddWithValue("CreateBy", category.CreatedBy);
-                cmd.Parameters.AddWithValue("CreateDate", category.CreatedDate);
+                    cmd.Parameters.AddWithValue("CreatedBy", category.CreatedBy);
+                cmd.Parameters.AddWithValue("CreatedDate", category.CreatedDate);
                 if (category.CreatedBy != null)
                     cmd.Parameters.AddWithValue("LastModifiedBy", category.LastModifiedBy);
                 if (category.LastModifiedDate != null)

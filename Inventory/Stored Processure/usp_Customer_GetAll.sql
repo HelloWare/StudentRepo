@@ -1,12 +1,13 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Customer_GetAll]    Script Date: 2017/3/23 20:19:38 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Customer_GetAll]    Script Date: 2017/3/26 12:54:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -26,6 +27,7 @@ BEGIN
 	SELECT Id, UserName, FirstName, LastName, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate
 	FROM [dbo].[Customer]
 END
+
 
 GO
 

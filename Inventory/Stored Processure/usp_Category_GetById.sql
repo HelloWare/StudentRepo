@@ -1,7 +1,7 @@
 USE [ECom]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Category_GetById]    Script Date: 2017/3/25 16:28:37 ******/
+/****** Object:  StoredProcedure [dbo].[usp_Category_GetById]    Script Date: 2017/3/26 12:53:10 ******/
 SET ANSI_NULLS ON
 GO
 
