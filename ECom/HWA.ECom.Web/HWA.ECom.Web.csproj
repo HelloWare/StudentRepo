@@ -256,6 +256,7 @@
     <Content Include="Views\Product\InsertView.cshtml" />
     <Content Include="Views\Product\ShowAllList.cshtml" />
     <Content Include="Views\Product\ShowDetail.cshtml" />
+    <Content Include="Views\Order\GetByStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
