@@ -11,7 +11,7 @@ namespace HWA.ECom.Web.Controllers
     public class CustomerController : Controller
     {
 
-        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.EComDb);
+        CustomerRepository customerRepo = new CustomerRepository(ConstantUtil.MyConnectionString);
 
         public ActionResult Index()
         {

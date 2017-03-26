@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5404DA25-082D-4E33-86CE-C7279F2C6C97}</ProjectGuid>
+    <ProjectGuid>{EF1CBDBF-FE69-47F8-B9BD-1F5F8305CC37}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -169,7 +169,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="ConstantUtil.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomerOrderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -238,18 +240,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Inventory\Create.cshtml" />
-    <Content Include="Views\Product\ListAllProducts.cshtml" />
-    <Content Include="Views\Customer\InsertView.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\InsertView.cshtml" />
+    <Content Include="Views\Category\ShowAllList.cshtml" />
+    <Content Include="Views\Category\ShowDetail.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Insert.cshtml" />
+    <Content Include="Views\Customer\InsertView.cshtml" />
     <Content Include="Views\Customer\ShowAllList.cshtml" />
     <Content Include="Views\Customer\ShowDetail.cshtml" />
-    <Content Include="Views\Customer\Edit.cshtml" />
-    <Content Include="Views\Order\ListAllOrders.cshtml" />
+    <Content Include="Views\Inventory\Create.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\ListAllOrders.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\InsertView.cshtml" />
+    <Content Include="Views\Product\ShowAllList.cshtml" />
+    <Content Include="Views\Product\ShowDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Status\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -285,9 +295,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60490</DevelopmentServerPort>
+          <DevelopmentServerPort>51023</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60490/</IISUrl>
+          <IISUrl>http://localhost:51023/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
