@@ -23,7 +23,7 @@ namespace HWA.Ecom.Repository
             this._connectionString = connectionString;
         }
         #endregion
-        public Boolean Insert(ShoppingCart shoppingCart)
+        public int Insert(ShoppingCart shoppingCart)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -32,17 +32,18 @@ namespace HWA.Ecom.Repository
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("CustomerId", shoppingCart.CustomerId);
                 cmd.Parameters.AddWithValue("GrandTotal", shoppingCart.GrandTotal);
+                if (shoppingCart.CreatedBy == null)
+                    shoppingCart.CreatedBy = "Default User";
                 cmd.Parameters.AddWithValue("CreatedBy", shoppingCart.CreatedBy);
                 cmd.Parameters.AddWithValue("CreatedDate", DateTime.Now);
-                cmd.Parameters.AddWithValue("LastModifiedBy", shoppingCart.CreatedBy);
+                cmd.Parameters.AddWithValue("LastModifiedBy", "Default User");
                 cmd.Parameters.AddWithValue("LastModifiedDate", DateTime.Now);
                 SqlParameter retval = cmd.Parameters.Add("Return", SqlDbType.Int);
                 retval.Direction = System.Data.ParameterDirection.ReturnValue;
-                int isInsert = cmd.ExecuteNonQuery();
-                if (isInsert == 1)
-                    return true;
+                return (int)cmd.ExecuteScalar();
+               
             }
-            return false;
+            return 0;
         }
 
         public Boolean Update(ShoppingCart shoppingCart)

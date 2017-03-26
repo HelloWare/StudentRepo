@@ -37,8 +37,8 @@ namespace HWA.ECom.Web.Controllers
             //String connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             //CategoryRepository categoryRepository = new CategoryRepository(connectionString);
 
-            if (customerOrderRepository.Insert(model))
-                return View("Index", model);
+            //if (customerOrderRepository.Insert(model))
+            //    return View("Index", model);
 
             return View("Index", model);
         }

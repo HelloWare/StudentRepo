@@ -17,7 +17,7 @@ namespace HWA.Ecom.Repository
         {
             this._connectionString = connectionString;
         }
-        public Boolean Create(ShoppingCartProduct shoppingCartProduct)
+        public int Create(ShoppingCartProduct shoppingCartProduct)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -26,18 +26,22 @@ namespace HWA.Ecom.Repository
                 cmd.CommandType =CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("ShoppingCartId", shoppingCartProduct.ShoppingCartId);
                 cmd.Parameters.AddWithValue("ProductId", shoppingCartProduct.ProductId);
+                        
                 cmd.Parameters.AddWithValue("Quantity", shoppingCartProduct.Quantity);
                 cmd.Parameters.AddWithValue("UnitPrice", shoppingCartProduct.UnitPrice);
-                cmd.Parameters.AddWithValue("UnitOfMeasure", shoppingCartProduct.UnitOfMeasure);
+                if (shoppingCartProduct.UnitOfMeasure == null)
+                    shoppingCartProduct.UnitOfMeasure = "EA";
+                    cmd.Parameters.AddWithValue("UnitOfMeasure", shoppingCartProduct.UnitOfMeasure);
                 cmd.Parameters.AddWithValue("SubTotal", shoppingCartProduct.SubTotal);
-                cmd.Parameters.AddWithValue("CreatedBy", shoppingCartProduct.CreatedBy);
-                cmd.Parameters.AddWithValue("CreatedDate", shoppingCartProduct.CreatedDate);
+                cmd.Parameters.AddWithValue("CreatedBy", "DDD");
+                cmd.Parameters.AddWithValue("CreatedDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("LastModifiedBy", "DDD");
+                cmd.Parameters.AddWithValue("LastModifiedDate", DateTime.Now);
                 SqlParameter retval = cmd.Parameters.Add("Return", SqlDbType.Int);
                 retval.Direction = System.Data.ParameterDirection.ReturnValue;
-                if (cmd.ExecuteNonQuery() == 1)
-                    return true; 
+                return cmd.ExecuteNonQuery();
             }
-            return false;
+            return 0;
         }
 
         public Boolean Update(ShoppingCartProduct shoppingCartProduct)
@@ -82,6 +86,31 @@ namespace HWA.Ecom.Repository
                 }
             }
             return false;
+        }
+
+        public IEnumerable<ShoppingCartProduct> GetAll()
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                string cmcText = "Select * from ShoppingCartProduct";
+                SqlCommand cmd = new SqlCommand(cmcText, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                List<ShoppingCartProduct> scps= new List<ShoppingCartProduct>();
+                while (reader.Read())
+                {
+                    ShoppingCartProduct scp = new ShoppingCartProduct(Convert.ToInt32(reader["ShoppingCartId"]), Convert.ToInt32(reader["ProductId"]));
+                    scp.CreatedBy = Convert.ToString(reader["CreatedBy"]);
+                    scp.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
+                    scp.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
+                    scp.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                    scp.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
+                    scp.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
+
+                    scps.Add(scp);
+                }
+                return scps;
+            }
         }
 
         public  ShoppingCartProduct SelectById(Int32 Id)

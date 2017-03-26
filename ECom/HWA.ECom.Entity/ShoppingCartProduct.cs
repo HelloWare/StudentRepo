@@ -13,6 +13,7 @@ namespace HWA.ECom.Entity
         {
             this.ShoppingCartId = shoppinngCartId;
             this.ProductId = productId;
+
                                 
         }
         public int ShoppingCartId

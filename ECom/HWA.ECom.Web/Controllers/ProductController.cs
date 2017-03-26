@@ -71,14 +71,24 @@ namespace HWA.ECom.Web.Controllers
             //not supposed to be here, should be after login event
             customer = customerRepo.GetById(1);
             shoppingCart = new ShoppingCart(customer.Id);
+            shoppingCart.CreatedBy = shoppingCart.LastModifiedBy = "Customer Name";
             // create a ShoppingCartRepository scr object
             //use scr to save shoppingCart
             ShoppingCartRepository scr = new ShoppingCartRepository(ConstantUtil.MyConnectionString);
-            scr.Insert(shoppingCart);
+            int shoppingCartId = scr.Insert(shoppingCart);
+           
+            ProductRepository pr = new ProductRepository(ConstantUtil.MyConnectionString);
+            Product p= pr.GetById(id);
 
-
-            ShoppingCartProduct scp = new ShoppingCartProduct(shoppingCart.Id, id);
+            ShoppingCartProduct scp = new ShoppingCartProduct(shoppingCartId, id);
             scp.Quantity = 100;
+            scp.UnitOfMeasure = p.UnitOfMeasure;
+            scp.UnitPrice = p.UnitPrice;
+            scp.CreatedBy = p.CreatedBy;
+            scp.LastModifiedBy = p.LastModifiedBy;
+            scp.CreatedDate = p.CreatedDate;
+            scp.LastModifiedDate = p.LastModifiedDate;
+            scp.SubTotal = scp.Quantity * scp.UnitPrice;
             //create a ShoppinngCartProductRepository scpr
             //use scpr to save scp
             ShoppingCartProductRepository scpr = new ShoppingCartProductRepository(ConstantUtil.MyConnectionString);

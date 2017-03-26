@@ -20,6 +20,6 @@ namespace HWA.ECom.Entity
         public decimal Tax { get; set; }
         public string UnitOfMeasure { get; set; }
     
-        public String Subtotal { get; set; }
+        public decimal Subtotal { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HWA.ECom.Repository
 {
-    class CustomerOrderProductRepository
+    public class CustomerOrderProductRepository
     {
         #region Fields
         private String _connectionString;
@@ -32,12 +32,11 @@ namespace HWA.ECom.Repository
                 con.Open();
                 SqlCommand cmd = new SqlCommand("usp_ECom_CustomerOrderProduct_Insert", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("Id", customerOrderProduct.Id);
+                
                 cmd.Parameters.AddWithValue("CustomerOrderId", customerOrderProduct.CustomerOrderId);
                 cmd.Parameters.AddWithValue("ProductId", customerOrderProduct.ProductId);
                 cmd.Parameters.AddWithValue("Quantity", customerOrderProduct.Quantity);
-                cmd.Parameters.AddWithValue("UnitPrice", customerOrderProduct.UnitOfMeasure);
+                cmd.Parameters.AddWithValue("UnitPrice", customerOrderProduct.UnitPrice);
                 cmd.Parameters.AddWithValue("Tax", customerOrderProduct.Tax);
                 cmd.Parameters.AddWithValue("UnitOfMeasure", customerOrderProduct.UnitOfMeasure);
                 cmd.Parameters.AddWithValue("LastModifiedDate", customerOrderProduct.LastModifiedDate);
@@ -149,7 +148,7 @@ namespace HWA.ECom.Repository
 
                         if (!reader.IsDBNull(6))
                         {
-                            customerOrderProduct.Subtotal = reader.GetString(6);
+                            customerOrderProduct.Subtotal = reader.GetDecimal(6);
                         }
 
                         if (!reader.IsDBNull(7))
@@ -232,7 +231,7 @@ namespace HWA.ECom.Repository
 
                         if (!reader.IsDBNull(7))
                         {
-                            customerOrderProduct.Subtotal = reader.GetString(7);
+                            customerOrderProduct.Subtotal = reader.GetDecimal(7);
                         }
 
                         if (!reader.IsDBNull(8))

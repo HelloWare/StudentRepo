@@ -25,7 +25,7 @@ namespace HWA.ECom.Repository
         #endregion
 
         //CRUD, 
-        public Boolean Insert(CustomerOrder customerOrder)
+        public int Insert(CustomerOrder customerOrder)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -36,24 +36,20 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("CustomerId", customerOrder.CustomerId);
                 cmd.Parameters.AddWithValue("StatusId", customerOrder.StatusId);
                 cmd.Parameters.AddWithValue("GrandTotal", customerOrder.GrandTotal);
-                cmd.Parameters.AddWithValue("PaymentType", customerOrder.PaymentType);
-                cmd.Parameters.AddWithValue("ShipToAddressId", customerOrder.ShipToAddressId);
-                cmd.Parameters.AddWithValue("OrderNumber", customerOrder.OrderNumber);
-                cmd.Parameters.AddWithValue("LastModifiedDate", customerOrder.LastModifiedDate);
-                cmd.Parameters.AddWithValue("CreatedDate", customerOrder.CreatedDate);
-                cmd.Parameters.AddWithValue("CreatedBy", customerOrder.CreatedBy);
-                cmd.Parameters.AddWithValue("LastModifiedBy", customerOrder.LastModifiedBy);
+                cmd.Parameters.AddWithValue("OrderDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("PaymentType", "ss");
+                cmd.Parameters.AddWithValue("ShipToAddressId", "ddds");
+                cmd.Parameters.AddWithValue("OrderNumber", "1121212");
+                cmd.Parameters.AddWithValue("LastModifiedDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("CreatedDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("CreatedBy", "Deyi");
+                cmd.Parameters.AddWithValue("LastModifiedBy", "Deyi");
                 //Add more parameters from SP
 
-                Int32 id = cmd.ExecuteNonQuery();
-
-                if (id > 0)
-                {
-                    customerOrder.Id = id;
-                    return true;
-                }
+                return (int)cmd.ExecuteScalar();
+                
             }
-            return false;
+            return 0;
         }
 
         public Boolean Update(CustomerOrder customerOrder)
