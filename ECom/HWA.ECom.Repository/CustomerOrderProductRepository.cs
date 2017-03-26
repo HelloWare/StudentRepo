@@ -122,57 +122,57 @@ namespace HWA.ECom.Repository
                 while (reader.Read())
                 {
 
-                    if (!reader.IsDBNull(1) && !reader.IsDBNull(2))
+                    if (reader["CustomerOrderId"] != null && reader["ProductId"] != null)
                     {
                         customerOrderProduct = new CustomerOrderProduct(Convert.ToInt32(reader["CustomerOrderId"]), Convert.ToInt32(reader["ProductId"]));
 
-                        if (!reader.IsDBNull(0))
+                        if (reader["Id"] != null)
                             customerOrderProduct.Id = Convert.ToInt32(reader["Id"]);
 
-                        if (!reader.IsDBNull(3))
+                        if (reader["Quantity"] != null)
                         {
                             customerOrderProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
                         }
 
-                        if (!reader.IsDBNull(4))
+                        if (reader["UnitPrice"] != null)
                         {
                             customerOrderProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
                         }
 
      
 
-                        if (!reader.IsDBNull(5))
+                        if (reader["UnitOfMeasure"] != null)
                         {
                             customerOrderProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
                         }
 
-                        if (!reader.IsDBNull(6))
+                        if (reader["Tax"] != null)
                         {
                             customerOrderProduct.Tax = Convert.ToDecimal(reader["Tax"]);
                         }
 
-                        if (!reader.IsDBNull(7))
+                        if (reader["Subtotal"] != null)
                         {
                             customerOrderProduct.Subtotal = Convert.ToString(reader["Subtotal"]);
                         }
 
-                        if (!reader.IsDBNull(8))
+                        if (reader["CreatedDate"] != null)
                         {
                             customerOrderProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
                         }
 
-                        if (!reader.IsDBNull(9))
+                        if (reader["CreatedBy"] != null)
                         {
                             customerOrderProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
                         }
 
                    
-                        if (!reader.IsDBNull(10))
+                        if (reader["LastModifiedBy"] != null)
                         {
                             customerOrderProduct.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
                         }
 
-                        if (!reader.IsDBNull(11))
+                        if (reader["LastModifiedDate"] != null)
                         {
                             customerOrderProduct.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
                         }
@@ -205,60 +205,61 @@ namespace HWA.ECom.Repository
                     //customerOrderProducts = new CustomerOrderProduct(reader.GetInt32(0), reader.GetInt32(1));
 
                     //customerOrderProduct.CustomerOrderId = reader.GetInt32(0);
-                    if (!reader.IsDBNull(1) && !reader.IsDBNull(2))
+                    if (reader["CustomerOrderId"] != null && reader["ProductId"] != null)
                     {
                         customerOrderProduct = new CustomerOrderProduct(Convert.ToInt32(reader["CustomerOrderId"]), Convert.ToInt32(reader["ProductId"]));
 
-                        if (!reader.IsDBNull(0))
+                        if (reader["Id"] != null)
                             customerOrderProduct.Id = Convert.ToInt32(reader["Id"]);
-                        if (!reader.IsDBNull(3))
+
+                        if (reader["Quantity"] != null)
                         {
                             customerOrderProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
                         }
 
-                        if (!reader.IsDBNull(4))
+                        if (reader["UnitPrice"] != null)
                         {
                             customerOrderProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
                         }
 
 
 
-                        if (!reader.IsDBNull(5))
+                        if (reader["UnitOfMeasure"] != null)
                         {
                             customerOrderProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
                         }
 
-                        if (!reader.IsDBNull(6))
+                        if (reader["Tax"] != null)
                         {
                             customerOrderProduct.Tax = Convert.ToDecimal(reader["Tax"]);
                         }
 
-                        if (!reader.IsDBNull(7))
+                        if (reader["Subtotal"] != null)
                         {
                             customerOrderProduct.Subtotal = Convert.ToString(reader["Subtotal"]);
                         }
 
-                        if (!reader.IsDBNull(8))
+                        if (reader["CreatedDate"] != null)
                         {
                             customerOrderProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
                         }
 
-                        if (!reader.IsDBNull(9))
+                        if (reader["CreatedBy"] != null)
                         {
                             customerOrderProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
                         }
 
 
-                        if (!reader.IsDBNull(10))
+                        if (reader["LastModifiedBy"] != null)
                         {
                             customerOrderProduct.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
                         }
 
-                        if (!reader.IsDBNull(11))
+                        if (reader["LastModifiedDate"] != null)
                         {
                             customerOrderProduct.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
                         }
-                       
+
                         customerOrderProducts.Add(customerOrderProduct);
                         //TO BE DONE, ORM process, map table data to class object
 
