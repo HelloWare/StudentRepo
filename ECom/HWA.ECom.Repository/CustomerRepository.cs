@@ -54,18 +54,21 @@ namespace HWA.ECom.Repository
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("usp_Customer_Insert", con);//usp_Customer_Insert
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                //SqlCommand cmd = new SqlCommand("usp_Customer_Insert", con);//usp_Customer_Insert
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("UserName", customer.UserName);
-                cmd.Parameters.AddWithValue("FirstName", customer.FirstName);
-                cmd.Parameters.AddWithValue("LastName", customer.LastName);
-                if(customer.CreatedBy != null)
-                    cmd.Parameters.AddWithValue("CreatedBy", customer.CreatedBy);
-                cmd.Parameters.AddWithValue("CreatedDate", customer.CreatedDate);
-                if (customer.LastModifiedBy != null)
-                    cmd.Parameters.AddWithValue("LastModifiedBy", customer.LastModifiedBy);
-                cmd.Parameters.AddWithValue("LastModifiedDate", customer.LastModifiedDate);
+                //cmd.Parameters.AddWithValue("UserName", customer.UserName);
+                //cmd.Parameters.AddWithValue("FirstName", customer.FirstName);
+                //cmd.Parameters.AddWithValue("LastName", customer.LastName);
+                ////if(customer.CreatedBy != null)
+                //cmd.Parameters.AddWithValue("CreatedBy", customer.CreatedBy);
+                //cmd.Parameters.AddWithValue("CreatedDate", customer.CreatedDate);
+                ////if (customer.LastModifiedBy != null)
+                //cmd.Parameters.AddWithValue("LastModifiedBy", customer.LastModifiedBy);
+                //cmd.Parameters.AddWithValue("LastModifiedDate", customer.LastModifiedDate);
+                String commandText = String.Format("INSERT [dbo].[Customer] (UserName, FirstName, LastName, CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", customer.UserName ?? "Default", customer.FirstName ?? "Defaulf FirstName", customer.LastName ?? "Default LastName", customer.CreatedBy ?? "Default User", customer.CreatedDate==null?DateTime.Now:customer.CreatedDate, customer.LastModifiedBy ?? "Default User", customer.LastModifiedDate == null ? DateTime.Now : customer.LastModifiedDate);
+
+                SqlCommand cmd = new SqlCommand(commandText, con);
 
                 cmd.ExecuteNonQuery();
 
@@ -107,10 +110,10 @@ namespace HWA.ECom.Repository
                 cmd.Parameters.AddWithValue("UserName", customer.UserName);
                 cmd.Parameters.AddWithValue("FirstName", customer.FirstName);
                 cmd.Parameters.AddWithValue("LastName", customer.LastName);
-                if (customer.CreatedBy != null)
-                    cmd.Parameters.AddWithValue("CreateDBy", customer.CreatedBy);
-                cmd.Parameters.AddWithValue("CreateDDate", customer.CreatedDate);
-                if (customer.CreatedBy != null)
+                //if (customer.CreatedBy != null)
+                    cmd.Parameters.AddWithValue("CreatedBy", customer.CreatedBy);
+                cmd.Parameters.AddWithValue("CreatedDate", customer.CreatedDate);
+                //if (customer.CreatedBy != null)
                     cmd.Parameters.AddWithValue("LastModifiedBy", customer.LastModifiedBy);
                 cmd.Parameters.AddWithValue("LastModifiedDate", DateTime.Now);
 
@@ -215,7 +218,8 @@ namespace HWA.ECom.Repository
                     customer.CreatedDate = reader.GetDateTime(5);
                     if (!reader.IsDBNull(6))
                         customer.LastModifiedBy = reader.GetString(6);
-                    customer.LastModifiedDate = reader.GetDateTime(7);
+                    if(!reader.IsDBNull(7))
+                        customer.LastModifiedDate = reader.GetDateTime(7);
  
                     customers.Add(customer);
                 }

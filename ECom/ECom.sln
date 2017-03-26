@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWA.ECom.Entity", "HWA.ECom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWA.ECom.Repository", "HWA.ECom.Repository\HWA.ECom.Repository.csproj", "{195B6508-C358-4C28-98CF-2DA89AFB66BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWA.ECom.Web", "HWA.ECom.Web\HWA.ECom.Web.csproj", "{5404DA25-082D-4E33-86CE-C7279F2C6C97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWA.ECom.Web", "HWA.ECom.Web\HWA.ECom.Web.csproj", "{EF1CBDBF-FE69-47F8-B9BD-1F5F8305CC37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{195B6508-C358-4C28-98CF-2DA89AFB66BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195B6508-C358-4C28-98CF-2DA89AFB66BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{195B6508-C358-4C28-98CF-2DA89AFB66BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5404DA25-082D-4E33-86CE-C7279F2C6C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5404DA25-082D-4E33-86CE-C7279F2C6C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5404DA25-082D-4E33-86CE-C7279F2C6C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5404DA25-082D-4E33-86CE-C7279F2C6C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1CBDBF-FE69-47F8-B9BD-1F5F8305CC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1CBDBF-FE69-47F8-B9BD-1F5F8305CC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1CBDBF-FE69-47F8-B9BD-1F5F8305CC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1CBDBF-FE69-47F8-B9BD-1F5F8305CC37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

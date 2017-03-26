@@ -122,50 +122,67 @@ namespace HWA.ECom.Repository
                 while (reader.Read())
                 {
 
+<<<<<<< HEAD
                     if (reader["CustomerOrderId"] != null && reader["ProductId"] != null)
+=======
+                    if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+>>>>>>> 679b3203449c7465444df5a538d58d2754e223ee
                     {
-                        customerOrderProduct = new CustomerOrderProduct(Convert.ToInt32(reader["CustomerOrderId"]), Convert.ToInt32(reader["ProductId"]));
+                        customerOrderProduct = new CustomerOrderProduct(reader.GetInt32(0), reader.GetInt32(1));
 
+<<<<<<< HEAD
                         if (reader["Id"] != null)
                             customerOrderProduct.Id = Convert.ToInt32(reader["Id"]);
+=======
+
+                        if (!reader.IsDBNull(2))
+                        {
+                            customerOrderProduct.Quantity = reader.GetDecimal(2);
+                        }
+>>>>>>> 679b3203449c7465444df5a538d58d2754e223ee
 
                         if (reader["Quantity"] != null)
                         {
-                            customerOrderProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
+                            customerOrderProduct.UnitPrice = reader.GetDecimal(3);
                         }
 
                         if (reader["UnitPrice"] != null)
                         {
-                            customerOrderProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
+                            customerOrderProduct.Tax = reader.GetDecimal(4);
                         }
 
+<<<<<<< HEAD
      
 
                         if (reader["UnitOfMeasure"] != null)
+=======
+                        if (!reader.IsDBNull(5))
+>>>>>>> 679b3203449c7465444df5a538d58d2754e223ee
                         {
-                            customerOrderProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
+                            customerOrderProduct.UnitOfMeasure = reader.GetString(5);
                         }
 
                         if (reader["Tax"] != null)
                         {
-                            customerOrderProduct.Tax = Convert.ToDecimal(reader["Tax"]);
+                            customerOrderProduct.Subtotal = reader.GetString(6);
                         }
 
                         if (reader["Subtotal"] != null)
                         {
-                            customerOrderProduct.Subtotal = Convert.ToString(reader["Subtotal"]);
+                            customerOrderProduct.CreatedDate = reader.GetDateTime(7);
                         }
 
                         if (reader["CreatedDate"] != null)
                         {
-                            customerOrderProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
+                            customerOrderProduct.LastModifiedDate = reader.GetDateTime(8);
                         }
 
                         if (reader["CreatedBy"] != null)
                         {
-                            customerOrderProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
+                            customerOrderProduct.CreatedBy = reader.GetString(9);
                         }
 
+<<<<<<< HEAD
                    
                         if (reader["LastModifiedBy"] != null)
                         {
@@ -175,6 +192,11 @@ namespace HWA.ECom.Repository
                         if (reader["LastModifiedDate"] != null)
                         {
                             customerOrderProduct.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+=======
+                        if (!reader.IsDBNull(10))
+                        {
+                            customerOrderProduct.LastModifiedBy = reader.GetString(10);
+>>>>>>> 679b3203449c7465444df5a538d58d2754e223ee
                         }
                         return customerOrderProduct;
 
@@ -205,59 +227,81 @@ namespace HWA.ECom.Repository
                     //customerOrderProducts = new CustomerOrderProduct(reader.GetInt32(0), reader.GetInt32(1));
 
                     //customerOrderProduct.CustomerOrderId = reader.GetInt32(0);
+<<<<<<< HEAD
                     if (reader["CustomerOrderId"] != null && reader["ProductId"] != null)
+=======
+                    if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+>>>>>>> 679b3203449c7465444df5a538d58d2754e223ee
                     {
-                        customerOrderProduct = new CustomerOrderProduct(Convert.ToInt32(reader["CustomerOrderId"]), Convert.ToInt32(reader["ProductId"]));
+                        customerOrderProduct = new CustomerOrderProduct(reader.GetInt32(0), reader.GetInt32(1));
 
+
+                        if (!reader.IsDBNull(2))
+                        {
+                            customerOrderProduct.ProductId = reader.GetInt32(2);
+                        }
+
+<<<<<<< HEAD
                         if (reader["Id"] != null)
                             customerOrderProduct.Id = Convert.ToInt32(reader["Id"]);
 
                         if (reader["Quantity"] != null)
+=======
+                        if (!reader.IsDBNull(3))
+>>>>>>> 679b3203449c7465444df5a538d58d2754e223ee
                         {
-                            customerOrderProduct.Quantity = Convert.ToDecimal(reader["Quantity"]);
+                            customerOrderProduct.Quantity = reader.GetDecimal(3);
                         }
 
                         if (reader["UnitPrice"] != null)
                         {
-                            customerOrderProduct.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
+                            customerOrderProduct.UnitPrice = reader.GetDecimal(4);
                         }
 
+<<<<<<< HEAD
 
 
                         if (reader["UnitOfMeasure"] != null)
+=======
+                        if (!reader.IsDBNull(5))
+>>>>>>> 679b3203449c7465444df5a538d58d2754e223ee
                         {
-                            customerOrderProduct.UnitOfMeasure = Convert.ToString(reader["UnitOfMeasure"]);
+                            customerOrderProduct.Tax = reader.GetDecimal(5);
                         }
 
                         if (reader["Tax"] != null)
                         {
-                            customerOrderProduct.Tax = Convert.ToDecimal(reader["Tax"]);
+                            customerOrderProduct.UnitOfMeasure = reader.GetString(6);
                         }
 
                         if (reader["Subtotal"] != null)
                         {
-                            customerOrderProduct.Subtotal = Convert.ToString(reader["Subtotal"]);
+                            customerOrderProduct.Subtotal = reader.GetString(7);
                         }
 
                         if (reader["CreatedDate"] != null)
                         {
-                            customerOrderProduct.CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
+                            customerOrderProduct.CreatedDate = reader.GetDateTime(8);
                         }
 
                         if (reader["CreatedBy"] != null)
                         {
-                            customerOrderProduct.CreatedBy = Convert.ToString(reader["CreatedBy"]);
+                            customerOrderProduct.LastModifiedDate = reader.GetDateTime(9);
                         }
 
+<<<<<<< HEAD
 
                         if (reader["LastModifiedBy"] != null)
+=======
+                        if (!reader.IsDBNull(10))
+>>>>>>> 679b3203449c7465444df5a538d58d2754e223ee
                         {
-                            customerOrderProduct.LastModifiedBy = Convert.ToString(reader["LastModifiedBy"]);
+                            customerOrderProduct.CreatedBy = reader.GetString(10);
                         }
 
                         if (reader["LastModifiedDate"] != null)
                         {
-                            customerOrderProduct.LastModifiedDate = Convert.ToDateTime(reader["LastModifiedDate"]);
+                            customerOrderProduct.LastModifiedBy = reader.GetString(11);
                         }
 
                         customerOrderProducts.Add(customerOrderProduct);

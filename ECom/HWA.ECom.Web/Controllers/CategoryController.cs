@@ -10,7 +10,7 @@ namespace HWA.ECom.Web.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryRepository categoryRepo = new CategoryRepository(ConstantUtil.EComDb);
+        CategoryRepository categoryRepo = new CategoryRepository(ConstantUtil.MyConnectionString);
 
         public ActionResult Index()
         {

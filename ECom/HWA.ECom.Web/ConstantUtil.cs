@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HWA.ECom.Web
 {
-    public class ConstantUtil
+    public static class ConstantUtil
     {
         public static String MyConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
