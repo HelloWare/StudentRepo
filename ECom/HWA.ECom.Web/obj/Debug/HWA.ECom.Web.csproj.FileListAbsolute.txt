@@ -71,3 +71,6 @@ C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ECom\HWA.ECom.Web\bin\Mi
 C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ECom\HWA.ECom.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ECom\HWA.ECom.Web\obj\Debug\HWA.ECom.Web.dll
 C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ECom\HWA.ECom.Web\obj\Debug\HWA.ECom.Web.pdb
+C:\Users\Amy Mao\Desktop\HellowareBootcamp\Project\StudentRepo\ECom\HWA.ECom.Web\obj\Debug\HWA.ECom.Web.csprojResolveAssemblyReference.cache
+C:\Users\Amy Mao\Desktop\HellowareBootcamp\Project\StudentRepo\ECom\HWA.ECom.Web\obj\Debug\HWA.ECom.Web.dll
+C:\Users\Amy Mao\Desktop\HellowareBootcamp\Project\StudentRepo\ECom\HWA.ECom.Web\obj\Debug\HWA.ECom.Web.pdb

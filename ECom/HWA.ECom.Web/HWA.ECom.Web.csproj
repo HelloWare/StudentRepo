@@ -258,7 +258,11 @@
     <Content Include="Views\Product\InsertView.cshtml" />
     <Content Include="Views\Product\ShowAllList.cshtml" />
     <Content Include="Views\Product\ShowDetail.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\ShoppingCart\ListShoppingCartProducts.cshtml" />
+=======
+    <Content Include="Views\Order\GetByStatus.cshtml" />
+>>>>>>> 765e95eb562613520914b23363cb1dafa3136b62
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
