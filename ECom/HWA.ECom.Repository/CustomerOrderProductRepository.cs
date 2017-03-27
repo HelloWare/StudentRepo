@@ -137,13 +137,11 @@ namespace HWA.ECom.Repository
                                 customerOrderProduct.Quantity = reader.GetDecimal(2);
                             }
 
-<<<<<<< HEAD
                         if (!reader.IsDBNull(6))
                         {
                             customerOrderProduct.Subtotal = reader.GetDecimal(6);
                         }
-=======
->>>>>>> 765e95eb562613520914b23363cb1dafa3136b62
+
 
                             if (reader["Quantity"] != null)
                             {
@@ -168,7 +166,7 @@ namespace HWA.ECom.Repository
 
                             if (reader["Tax"] != null)
                             {
-                                customerOrderProduct.Subtotal = reader.GetString(6);
+                                customerOrderProduct.Subtotal = reader.GetDecimal(6);
                             }
 
                             if (reader["Subtotal"] != null)
