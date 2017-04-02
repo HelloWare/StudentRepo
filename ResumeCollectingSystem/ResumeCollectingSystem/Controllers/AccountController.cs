@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ResumeCollectingSystem.Models;
+using System.Web.Security;
 
 namespace ResumeCollectingSystem.Controllers
 {
@@ -79,7 +80,15 @@ namespace ResumeCollectingSystem.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    
+                    foreach (var item in UserManager.GetRoles(UserManager.FindByEmail(model.Email).Id))
+                    {
+                        if (item == "Student")
+                            return RedirectToAction("About","Home");
+                    }
+
+                    return RedirectToAction("Index","Home");
+                    //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -136,9 +145,17 @@ namespace ResumeCollectingSystem.Controllers
 
         //
         // GET: /Account/Register
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            ViewBag.RoleType = new SelectList(dbContext.Roles,"Name","Name");
+            ////ViewBag.Roles = dbContext.Roles.ToList().Select(x => new SelectListItem
+            //{
+            //    Text = x.Id,
+            //    Value = x.Name
+            //});
             return View();
         }
 
@@ -155,13 +172,15 @@ namespace ResumeCollectingSystem.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //UserManager.AddToRole(user.Id, model.RoleType);
+                   
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }

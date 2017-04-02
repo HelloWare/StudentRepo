@@ -54,9 +54,9 @@ namespace ResumeCollectingSystem
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1778805579101487",
+               appSecret: "af85bffa9f68b5a572e1bad6a5ec3031");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

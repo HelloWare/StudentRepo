@@ -1,0 +1,4 @@
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\DAL\bin\Debug\DAL.dll
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\DAL\bin\Debug\DAL.pdb
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\DAL\obj\Debug\DAL.dll
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\DAL\obj\Debug\DAL.pdb

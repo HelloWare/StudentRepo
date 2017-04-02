@@ -56,12 +56,14 @@
         </div>
 
         <div class="form-group">
-            <span>Degree</span>
+            @*<label class="control-label col-md-2">Degree</label>*@
+            @Html.LabelFor(model => model.DegreeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
              @Html.DropDownListFor(model => model.DegreeId, ViewBag.Degrees as SelectList)
 
             </div>
         </div>
+        @*<input type="file" name="file" id="file" />*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-2" })

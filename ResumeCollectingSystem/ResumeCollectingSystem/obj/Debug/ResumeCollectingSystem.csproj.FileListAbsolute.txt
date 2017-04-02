@@ -67,3 +67,5 @@ C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\R
 C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\ResumeCollectingSystem\obj\Debug\ResumeCollectingSystem.csprojResolveAssemblyReference.cache
 C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\ResumeCollectingSystem\obj\Debug\ResumeCollectingSystem.dll
 C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\ResumeCollectingSystem\obj\Debug\ResumeCollectingSystem.pdb
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\ResumeCollectingSystem\bin\DAL.dll
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\ResumeCollectingSystem\bin\DAL.pdb

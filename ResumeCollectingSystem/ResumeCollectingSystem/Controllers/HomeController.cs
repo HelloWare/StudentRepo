@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ResumeCollectingSystem.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -13,13 +14,14 @@ namespace ResumeCollectingSystem.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
+        [Authorize(Roles ="Student,Teacher")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

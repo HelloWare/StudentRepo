@@ -1,0 +1,11 @@
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\bin\Debug\Demo.exe.config
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\bin\Debug\Demo.exe
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\bin\Debug\Demo.pdb
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\obj\Debug\Demo.Form1.resources
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\obj\Debug\Demo.Properties.Resources.resources
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\obj\Debug\Demo.csproj.GenerateResource.Cache
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\obj\Debug\Demo.exe
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\obj\Debug\Demo.pdb
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\bin\Debug\DAL.dll
+C:\Users\HelloWare Academy\Documents\GitHub\StudentRepo\ResumeCollectingSystem\Demo\bin\Debug\DAL.pdb

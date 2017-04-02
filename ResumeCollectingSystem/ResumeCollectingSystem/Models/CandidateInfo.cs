@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -24,6 +25,8 @@ namespace ResumeCollectingSystem.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Major { get; set; }
+
+        [Display(Name = "Degree")]
         public int DegreeId { get; set; }
         public int GenderId { get; set; }
         public int PositionId { get; set; }
